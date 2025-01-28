@@ -1,17 +1,25 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/Logo.png";
+import useCoin from "../../hook/useCoin";
+import useAuth from "../../hook/useAuth";
 
 const Navbar = () => {
+  const { user: currentUser, logout } = useAuth();
+  const email = currentUser?.email;
+  console.log(email);
+  const { user, isLoading, error } = useCoin(email);
+  console.log(user);
   const link = (
     <>
       <li>
         <NavLink to="/dashboard" className="">
           Dashboard
         </NavLink>
-        </li>
-        <li>
+      </li>
+      <li>
         <NavLink to="/dashboard" className="">
-          Available coin
+          Available coin:{" "}
+          {isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}
         </NavLink>
       </li>
     </>
@@ -58,26 +66,35 @@ const Navbar = () => {
           </div>
           <div className="navbar-end ">
             <div className="flex gap-1 justify-center items-center">
-              <Link to="/login" className="btn btn-success">
-                Login{" "}
-              </Link>
-              <Link to="/register" className="btn btn-success">
-                Register{" "}
-              </Link>
-              <Link to="/login" className="btn btn-success">
-                User profile
-              </Link>
-              <Link to="/login" className="btn btn-success">
-                Logout
-              </Link>
-              <Link
-                to="https://github"
+              {currentUser && currentUser.email ? (
+                <>
+                  <Link to="/profile" className="btn btn-success">
+                    User Profile
+                  </Link>
+                  <button onClick={logout} className="btn btn-success">
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" className="btn btn-success">
+                    Login
+                  </Link>
+                  <Link to="/register" className="btn btn-success">
+                    Register
+                  </Link>
+                </>
+              )}
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-link text-xs text-gray-700"
               >
                 Join as
                 <br />
                 Developer
-              </Link>
+              </a>
             </div>
           </div>
         </div>

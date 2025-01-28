@@ -17,10 +17,11 @@ const Features = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-11/12 mx-auto">
           {features.map((feature) => (
             <motion.div 
-            initial={{opacity:0}}
-            whileInView={{opacity:1}}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             transition={{
-                duration:.5 ,delay: features.id * .4 
+              duration: 0.5,
+              delay: feature.id * 0.4, 
             }} 
             key={feature.id} className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
               <div className="text-5xl mb-4">{feature.icon}</div>
