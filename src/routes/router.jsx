@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     createBrowserRouter,
     
@@ -14,7 +13,7 @@ import Home from '../pages/Home/Home';
         {
           path:'/',
           element: <Home></Home>
-        }
+        },
       ]
     },
   ]);
