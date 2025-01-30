@@ -15,11 +15,7 @@ import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import auth from "../../firebase";
 
-<<<<<<< HEAD
-const googleProvider = new GoogleAuthProvider()
-=======
 
->>>>>>> b0f9f31 (add new task added)
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React from 'react';
-=======
-
->>>>>>> b0f9f31 (add new task added)
 import Banner from './Banner';
 import Testimonial from './Testimonial';
 import HowItWorks from './HowItWorks';
