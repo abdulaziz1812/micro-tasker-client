@@ -1,25 +1,90 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hook/useAxiosPublic";
+import useAuth from "../../../hook/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
+import useCoin from "../../../hook/useCoin";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddTask = () => {
+  const navigate = useNavigate();
+  const { user: currentUser } = useAuth();
+  const email = currentUser?.email;
+  const { user, isLoading, error, refetch } = useCoin(email);
+  const coin = user?.coin;
+
   const { register, handleSubmit } = useForm();
   const axiosPublic = useAxiosPublic();
-  const onSubmit = async (data) => {
-    console.log(data);
-    const imageFile = { image: data.task_image[0] };
-    const res = await axiosPublic.post(image_hosting_api, imageFile, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    // if(res.data.success){
 
-    // }
-    console.log(res.data);
+  const onSubmit = async (data) => {
+    console.log("Form Data:", data);
+
+    const totalPayableAmount =
+      parseFloat(data.required_workers) * parseFloat(data.payable_amount);
+    console.log("Total Payable:", totalPayableAmount);
+
+    
+    if (coin < totalPayableAmount) {
+      Swal.fire({
+        title: "Not Enough Coins!",
+        text: "You need to purchase more coins to add this task.",
+        icon: "error",
+        confirmButtonText: "Go to Purchase",
+      }).then(() => {
+        navigate("/buyer/purchase-coin");
+      });
+      return;
+    }
+
+    
+    const existingTaskRes = await axiosPublic.get(
+      `/tasks?task_title=${data.task_title}`
+    );
+    if (existingTaskRes.data) {
+      Swal.fire({
+        title: "Duplicate Task!",
+        text: "A task with this title already exists.",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    
+    const imageFile = new FormData();
+    imageFile.append("image", data.task_image[0]);
+
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    if (res.data.success) {
+      const newTask = {
+        task_title: data.task_title,
+        task_detail: data.task_detail,
+        required_workers: parseFloat(data.required_workers),
+        payable_amount: parseFloat(data.payable_amount),
+        completion_date: data.completion_date,
+        submission_info: data.submission_info,
+        task_image: res.data.data.display_url,
+        email,
+      };
+
+      const taskRes = await axiosPublic.post("/tasks", newTask);
+      if (taskRes.data.insertedId) {
+        const updatedCoins = coin - totalPayableAmount;
+
+        await axiosPublic.patch(`/user/${email}`, { coin: updatedCoins });
+
+        Swal.fire({
+          title: "Task Added Successfully",
+          icon: "success",
+        });
+        refetch();
+      }
+    }
   };
 
   return (
@@ -27,12 +92,12 @@ const AddTask = () => {
       <h2 className="text-2xl font-bold mb-4 w-full">Add New Task</h2>
       <div>
         <div className="flex-col lg:flex-row w-full">
-          <div className="card bg-base-100 w-full  shadow-2xl ">
+          <div className="card bg-base-100 w-full shadow-2xl">
             <form
               className="card-body pb-0 w-full grid gap-8 grid-cols-2 mb-8"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <div className="form-control ">
+              <div className="form-control">
                 <label className="label mb-2">
                   <span className="label-text">Task Title</span>
                 </label>
@@ -40,7 +105,6 @@ const AddTask = () => {
                   type="text"
                   placeholder="Task Title"
                   className="input input-bordered w-full"
-                  name="task_title"
                   {...register("task_title", { required: true })}
                   required
                 />
@@ -52,22 +116,21 @@ const AddTask = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="task_detail"
+                  placeholder="Task Detail"
                   className="input input-bordered w-full"
-                  name="task_detail"
                   {...register("task_detail", { required: true })}
                   required
                 />
               </div>
+
               <div className="form-control">
                 <label className="label mb-2">
-                  <span className="label-text">Required workers</span>
+                  <span className="label-text">Required Workers</span>
                 </label>
                 <input
                   type="number"
-                  placeholder="Required workers"
+                  placeholder="Required Workers"
                   className="input input-bordered w-full"
-                  name="required_workers"
                   {...register("required_workers", { required: true })}
                   required
                 />
@@ -81,7 +144,6 @@ const AddTask = () => {
                   type="number"
                   placeholder="Payable Amount"
                   className="input input-bordered w-full"
-                  name="payable_amount"
                   {...register("payable_amount", { required: true })}
                   required
                 />
@@ -93,9 +155,8 @@ const AddTask = () => {
                 </label>
                 <input
                   type="date"
-                  placeholder="completion_date"
+                  placeholder="Completion Date"
                   className="input input-bordered w-full"
-                  name="completion_date"
                   {...register("completion_date", { required: true })}
                   required
                 />
@@ -108,8 +169,7 @@ const AddTask = () => {
                 <input
                   type="text"
                   placeholder="Submission Info"
-                  className="input input-bordered w-full  "
-                  name="submission_info"
+                  className="input input-bordered w-full"
                   {...register("submission_info", { required: true })}
                   required
                 />
@@ -117,7 +177,7 @@ const AddTask = () => {
 
               <div className="form-control">
                 <label className="label mb-2">
-                  <span className="label-text mr-2">Task image</span>
+                  <span className="label-text">Task Image</span>
                 </label>
                 <input
                   type="file"
@@ -127,30 +187,12 @@ const AddTask = () => {
                 />
               </div>
 
-              {/* {error.password && (
-                <label className="label text-xs text-red-500">
-                  {error.password}
-                </label>
-              )}
-              {error.reg && (
-                <label className="label text-sm text-red-500">
-                  {error.reg}
-                </label>
-              )} */}
               <button type="submit" className="btn btn-success my-6">
                 Add Task
               </button>
             </form>
           </div>
         </div>
-
-        {/* {task.taskImageUrl && (
-          <img
-            src={task.taskImageUrl}
-            alt="Task Preview"
-            className="w-32 h-32"
-          />
-        )} */}
       </div>
     </div>
   );

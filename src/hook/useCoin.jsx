@@ -3,7 +3,7 @@ import useAxiosSecure from "./useAxiosSecure"
 
 const useCoin = (email) => {
     const axiosSecure = useAxiosSecure();
-    const { data: user = {}, isLoading, error } = useQuery({
+    const { data: user = {}, isLoading, error, refetch } = useQuery({
       queryKey: ['coin', email],
       queryFn: async () => {
         if (!email) return {}; 
@@ -13,7 +13,7 @@ const useCoin = (email) => {
       enabled: !!email, 
     });
   
-    return { user, isLoading, error };
+    return { user, isLoading, error, refetch };
   };
   
 export default useCoin

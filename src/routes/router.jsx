@@ -7,6 +7,7 @@ import Dashboard from "../Layouts/Dashboard";
 import NotFound from "../pages/NotFound";
 import AddTask from "../pages/Dashboard/buyer/AddTask";
 import MainLayout from "../Layouts/MainLayout";
+import MyTask from "../pages/Dashboard/buyer/MyTask";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "buyer/my-tasks",
-        
+        element:<MyTask></MyTask>
       },
       {
         path: "buyer/purchase-coin",

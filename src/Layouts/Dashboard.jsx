@@ -12,11 +12,11 @@ const Dashboard = () => {
 
   const links = {
     Buyer: [
-      { name: "Buyer Home", path: "/buyer/home" },
+      { name: "Buyer Home", path: "/dashboard/buyer/home" },
       { name: "Add new Tasks", path: "/dashboard/buyer/add-task" },
-      { name: "My Tasks", path: "/buyer/my-tasks" },
-      { name: "Purchase Coin", path: "/buyer/purchase-coin" },
-      { name: "Payment History", path: "/buyer/payment-history" },
+      { name: "My Tasks", path: "/dashboard/buyer/my-tasks" },
+      { name: "Purchase Coin", path: "/dashboard/buyer/purchase-coin" },
+      { name: "Payment History", path: "/dashboard/buyer/payment-history" },
     ],
     Worker: [
       { name: "Worker Home", path: "/worker/home" },
