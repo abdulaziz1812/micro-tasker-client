@@ -2,6 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/Logo.png";
 import useCoin from "../../hook/useCoin";
 import useAuth from "../../hook/useAuth";
+<<<<<<< HEAD
+=======
+import coin from "../../assets/coin.gif"
+
+>>>>>>> b0f9f31 (add new task added)
 
 const Navbar = () => {
   const { user: currentUser, logout } = useAuth();
@@ -20,6 +25,10 @@ const Navbar = () => {
         <NavLink to="/dashboard" className="">
           Available coin:{" "}
           {isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}
+<<<<<<< HEAD
+=======
+          <img src={coin} alt=""  className="w-5 rounded-full"/>
+>>>>>>> b0f9f31 (add new task added)
         </NavLink>
       </li>
     </>
@@ -54,7 +63,11 @@ const Navbar = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
+<<<<<<< HEAD
                 {link}
+=======
+                {currentUser && currentUser.email ? link:""}
+>>>>>>> b0f9f31 (add new task added)
               </ul>
             </div>
             <Link to="/">
@@ -62,15 +75,38 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
+<<<<<<< HEAD
             <ul className="menu menu-horizontal px-1">{link}</ul>
+=======
+            <ul className="menu menu-horizontal px-1">{currentUser && currentUser.email ? link:""}</ul>
+>>>>>>> b0f9f31 (add new task added)
           </div>
           <div className="navbar-end ">
             <div className="flex gap-1 justify-center items-center">
               {currentUser && currentUser.email ? (
                 <>
+<<<<<<< HEAD
                   <Link to="/profile" className="btn btn-success">
                     User Profile
                   </Link>
+=======
+                  <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar tooltip tooltip-left"
+                  data-tip={currentUser?.displayName || "Profile"}
+                >
+                  <div className=" rounded-full">
+                    <img
+                      alt="profile"
+                      src={
+                        currentUser?.photoURL ||
+                        "https://img.icons8.com/?size=48&id=O9K5DaypaVKw&format=gif"
+                      }
+                    />
+                  </div>
+                </div>
+>>>>>>> b0f9f31 (add new task added)
                   <button onClick={logout} className="btn btn-success">
                     Logout
                   </button>
@@ -86,7 +122,11 @@ const Navbar = () => {
                 </>
               )}
               <a
+<<<<<<< HEAD
                 href="https://github.com"
+=======
+                href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-abdulaziz1812"
+>>>>>>> b0f9f31 (add new task added)
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-link text-xs text-gray-700"

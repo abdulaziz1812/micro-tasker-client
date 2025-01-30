@@ -151,7 +151,11 @@ const Register = () => {
                     name="role"
                     required
                   >
+<<<<<<< HEAD
                     <option disabled={true} className="text-[#8a8a8a]" selected>
+=======
+                    <option value="" disabled className="text-[#8a8a8a]" >
+>>>>>>> b0f9f31 (add new task added)
                       Select a Role
                     </option>
                     <option>Worker</option>
