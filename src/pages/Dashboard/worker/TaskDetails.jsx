@@ -23,9 +23,28 @@ const TaskDetails = () => {
     });
   };
 
+ 
+  
+
   const onSubmit = async (data) => {
     console.log("Form Data:", data);
     
+    const existingSubmission = await axiosSecure.get(
+        `/submissions?task_id=${task._id}&worker_email=${currentUser.email}`
+      );
+
+
+      console.log(existingSubmission.data);
+      if (existingSubmission.data.length>0) {
+        Swal.fire({
+          title: "Duplicate Task!",
+          text: "A task with this title already Submitted.",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        return;
+      }
+
     const submission = {
       task_id: task._id,
       task_title: task.task_title,

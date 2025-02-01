@@ -14,6 +14,8 @@ import Checkout from "../pages/Dashboard/buyer/Checkout";
 import PaymentHistory from "../pages/Dashboard/buyer/PaymentHistory";
 import TaskList from "../pages/Dashboard/worker/TaskList";
 import TaskDetails from "../pages/Dashboard/worker/TaskDetails";
+import MySubmissions from "../pages/Dashboard/worker/MySubmissions";
+import Withdraw from "../pages/Dashboard/worker/Withdraw";
 
 const router = createBrowserRouter([
   {
@@ -90,11 +92,11 @@ const router = createBrowserRouter([
       },
       {
         path: "worker/my-submissions",
-        
+        element: <MySubmissions></MySubmissions>
       },
       {
         path: "worker/withdrawals",
-       
+        element:<Withdraw></Withdraw>
       },
       // Admin Routes
       {

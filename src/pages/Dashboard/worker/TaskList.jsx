@@ -48,7 +48,7 @@ const TaskList = () => {
               <div className="card-actions justify-end">
                 <button 
                 onClick={() => navigate(`/dashboard/worker/task-details/${task._id}`)}
-                className="btn btn-success">Buy Now</button>
+                className="btn btn-success">View Details</button>
               </div>
             </div>
           </div>

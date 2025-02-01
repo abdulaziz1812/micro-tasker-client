@@ -21,7 +21,7 @@ const Dashboard = () => {
     Worker: [
       { name: "Worker Home", path: "/dashboard/worker/home" },
       { name: "Task List", path: "/dashboard/worker/task-list" },
-      { name: "My Submissions", path: "/dashboard/worker/submissions" },
+      { name: "My Submissions", path: "/dashboard/worker/my-submissions" },
       { name: "Withdrawals", path: "/dashboard/worker/withdrawals" },
     ],
     Admin: [
