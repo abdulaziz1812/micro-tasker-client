@@ -95,11 +95,8 @@ const Dashboard = () => {
           </ul>
         </div>
 
-        <div className="w-full bg-gray-100 p-8 rounded-r-2xl ">
-          <h2 className="text-2xl font-bold">Welcome to the Dashboard!</h2>
-          <p>Select an option from the sidebar to get started.</p>
           <Outlet></Outlet>
-        </div>
+        
       </div>
       <footer className="bg-green-900 text-white py-6 mb-8">
         <div className="w-10/12 mx-auto flex justify-between items-center">

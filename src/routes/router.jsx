@@ -8,6 +8,10 @@ import NotFound from "../pages/NotFound";
 import AddTask from "../pages/Dashboard/buyer/AddTask";
 import MainLayout from "../Layouts/MainLayout";
 import MyTask from "../pages/Dashboard/buyer/MyTask";
+import DashboardHome from "../pages/Dashboard/buyer/DashboardHome";
+import PurchaseCoin from "../pages/Dashboard/buyer/PurchaseCoin";
+import Checkout from "../pages/Dashboard/buyer/Checkout";
+import PaymentHistory from "../pages/Dashboard/buyer/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +43,10 @@ const router = createBrowserRouter([
     children: [
       // Buyer 
       {
+        path: "/dashboard",
+        element: <DashboardHome></DashboardHome>,
+      },
+      {
         path: "buyer/buyer-home",
         
       },
@@ -53,12 +61,17 @@ const router = createBrowserRouter([
       },
       {
         path: "buyer/purchase-coin",
-        
+        element: <PurchaseCoin></PurchaseCoin>
+      }, 
+      {
+        path: "buyer/checkout",
+        element: <Checkout></Checkout>
       },
       {
         path: "buyer/payment-history",
-        
+        element:<PaymentHistory></PaymentHistory>
       },
+     
       // Worker 
       {
         path: "worker/worker-home",
