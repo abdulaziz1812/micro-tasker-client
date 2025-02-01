@@ -12,6 +12,8 @@ import DashboardHome from "../pages/Dashboard/buyer/DashboardHome";
 import PurchaseCoin from "../pages/Dashboard/buyer/PurchaseCoin";
 import Checkout from "../pages/Dashboard/buyer/Checkout";
 import PaymentHistory from "../pages/Dashboard/buyer/PaymentHistory";
+import TaskList from "../pages/Dashboard/worker/TaskList";
+import TaskDetails from "../pages/Dashboard/worker/TaskDetails";
 
 const router = createBrowserRouter([
   {
@@ -79,7 +81,12 @@ const router = createBrowserRouter([
       },
       {
         path: "worker/task-list",
-        
+        element: <TaskList></TaskList>
+      },
+      {
+        path: "worker/task-details/:id",
+        element:<TaskDetails></TaskDetails>,
+        loader: ({ params }) => fetch(    `http://localhost:5000/task-details/${params.id}`),
       },
       {
         path: "worker/my-submissions",

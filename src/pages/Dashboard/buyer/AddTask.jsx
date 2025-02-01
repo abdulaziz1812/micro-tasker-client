@@ -12,10 +12,12 @@ const AddTask = () => {
   const navigate = useNavigate();
   const { user: currentUser } = useAuth();
   const email = currentUser?.email;
+  const name= currentUser?.displayName
   const { user, isLoading, error, refetch } = useCoin(email);
   const coin = user?.coin;
-
-  const { register, handleSubmit } = useForm();
+ 
+  console.log(currentUser);
+  const { register, handleSubmit,reset } = useForm();
   const axiosPublic = useAxiosPublic();
 
   const onSubmit = async (data) => {
@@ -33,7 +35,7 @@ const AddTask = () => {
         icon: "error",
         confirmButtonText: "Go to Purchase",
       }).then(() => {
-        navigate("/buyer/purchase-coin");
+        navigate("dashboard/buyer/purchase-coin");
       });
       return;
     }
@@ -70,6 +72,7 @@ const AddTask = () => {
         submission_info: data.submission_info,
         task_image: res.data.data.display_url,
         email,
+        name
       };
 
       const taskRes = await axiosPublic.post("/tasks", newTask);
@@ -83,6 +86,7 @@ const AddTask = () => {
           icon: "success",
         });
         refetch();
+        reset()
       }
     }
   };

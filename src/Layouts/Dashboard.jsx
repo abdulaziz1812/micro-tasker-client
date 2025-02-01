@@ -19,15 +19,15 @@ const Dashboard = () => {
       { name: "Payment History", path: "/dashboard/buyer/payment-history" },
     ],
     Worker: [
-      { name: "Worker Home", path: "/worker/home" },
-      { name: "Task List", path: "/worker/task-list" },
-      { name: "My Submissions", path: "/worker/submissions" },
-      { name: "Withdrawals", path: "/worker/withdrawals" },
+      { name: "Worker Home", path: "/dashboard/worker/home" },
+      { name: "Task List", path: "/dashboard/worker/task-list" },
+      { name: "My Submissions", path: "/dashboard/worker/submissions" },
+      { name: "Withdrawals", path: "/dashboard/worker/withdrawals" },
     ],
     Admin: [
-      { name: "Admin Home", path: "/admin/home" },
-      { name: "Manage Users", path: "/admin/manage-users" },
-      { name: "Manage Tasks", path: "/admin/manage-tasks" },
+      { name: "Admin Home", path: "/dashboard/admin/home" },
+      { name: "Manage Users", path: "/dashboard/admin/manage-users" },
+      { name: "Manage Tasks", path: "/dashboard/admin/manage-tasks" },
     ],
     Default: [{ name: "Home", path: "/" }],
   };
