@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../hook/useAuth";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const MySubmissions = () => {
   const { user: currentUser } = useAuth();
@@ -46,7 +47,10 @@ const MySubmissions = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 w-full">
+      <Helmet>
+                      <title>My Submissions| Micro Tasker</title>
+                    </Helmet>
       <h2 className="text-2xl font-bold mb-4">My Submissions</h2>
       <div className="overflow-x-auto p-6 shadow-2xl rounded-2xl">
         <table className="table table-zebra ">
@@ -62,7 +66,7 @@ const MySubmissions = () => {
           <tbody>
             {submissions && submissions.length > 0 ? (
               submissions.map((submission ,index) => (
-                <tr key={submission._id} >
+                <tr key={submission._id} className="text-center">
                   <td>{index+1}</td>
                   <td>{submission.task_title}</td>
                   <td>{submission.submission_details}</td>

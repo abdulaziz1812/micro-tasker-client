@@ -43,7 +43,7 @@ const testimonials = [
 const Testimonial = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0 }}
+      initial={{ opacity: 0, scale: 0.5 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
       className="bg-gray-50 py-12"

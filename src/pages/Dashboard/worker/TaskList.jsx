@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 const TaskList = () => {
@@ -32,6 +33,9 @@ const TaskList = () => {
 
   return (
     <div className="p-8">
+      <Helmet>
+                      <title>Task-List | Micro Tasker</title>
+                    </Helmet>
       <h2 className="text-2xl font-bold mb-6">Available Tasks</h2>
 
       {tasks.length > 0 ? (

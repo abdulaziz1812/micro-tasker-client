@@ -5,6 +5,7 @@ import { BsCashCoin } from "react-icons/bs";
 import { ImCoinDollar } from "react-icons/im";
 import { FaCashRegister } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const AdminHome = () => {
@@ -64,6 +65,9 @@ const AdminHome = () => {
 
   return (
     <div className="flex flex-col  w-full ">
+      <Helmet>
+              <title>Admin Home | Micro Tasker</title>
+            </Helmet>
       {/* Stats */}
       <div className="stats shadow-2xl m-8 border border-gray-200">
         <div className="stat">

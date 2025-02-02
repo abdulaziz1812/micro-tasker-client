@@ -93,7 +93,7 @@ const router = createBrowserRouter([
       {
         path: "worker/task-details/:id",
         element:<TaskDetails></TaskDetails>,
-        loader: ({ params }) => fetch(    `http://localhost:5000/task-details/${params.id}`),
+        loader: ({ params }) => fetch( `http://localhost:5000/task-details/${params.id}`),
       },
       {
         path: "worker/my-submissions",

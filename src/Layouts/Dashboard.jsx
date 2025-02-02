@@ -4,6 +4,7 @@ import useCoin from "../hook/useCoin";
 import useAuth from "../hook/useAuth";
 import coin from "../assets/coin.gif";
 import notification from "../assets/notfication.gif";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const { user: currentUser } = useAuth();
@@ -36,6 +37,9 @@ const Dashboard = () => {
 
   return (
     <div className="mx-auto w-10/12">
+    <Helmet>
+            <title>Dashboard | Micro Tasker</title>
+          </Helmet>
       <div className="flex justify-between items-center p-4">
         <Link to="/">
           <img className="w-28" src={logo} alt="" />

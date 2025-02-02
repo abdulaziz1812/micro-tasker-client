@@ -2,12 +2,13 @@ import React from "react";
 import useAuth from "../../../hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const PaymentHistory = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const { data: payments =[]} = useQuery({
+  const { data: payments = [] } = useQuery({
     queryKey: ["payments", user.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/payments/${user.email}`);
@@ -27,7 +28,11 @@ const PaymentHistory = () => {
     });
   };
   return (
-    <div className="m-10 w-full" >
+    <div className="m-10 w-full">
+      <Helmet>
+        <title>Payment-History | Micro Tasker</title>
+      </Helmet>
+      <h2 className="text-2xl font-bold mb-4">Payment History</h2>
       <div className="overflow-x-auto p-6 rounded shadow-2xl border border-gray-200">
         <table className="table table-zebra ">
           {/* head */}
@@ -36,21 +41,18 @@ const PaymentHistory = () => {
               <th>Sl No</th>
               <th>Price</th>
               <th>Transaction Id</th>
-              <th>Date of Transaction</th> 
+              <th>Date of Transaction</th>
             </tr>
           </thead>
           <tbody>
-            {payments.map((payment, index) =><tr
-            key={payment._id}
-            className="text-center"
-            >
-              <td>{index+1}</td>
-              <td>$ {payment.price}</td>
-              <td>{payment.transactionId}</td>
-              <td>{date(payment.date)}</td>
-            </tr>
-            )}
-            
+            {payments.map((payment, index) => (
+              <tr key={payment._id} className="text-center">
+                <td>{index + 1}</td>
+                <td>$ {payment.price}</td>
+                <td>{payment.transactionId}</td>
+                <td>{date(payment.date)}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

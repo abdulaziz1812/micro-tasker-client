@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import Swal from "sweetalert2";
 import useCoin from "../../../hook/useCoin";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet-async";
 
 const Withdraw = () => {
   const { user: currentUser } = useAuth();
@@ -62,6 +63,9 @@ const Withdraw = () => {
 
   return (
     <div className="p-6 w-full">
+      <Helmet>
+                      <title>Withdraw | Micro Tasker</title>
+                    </Helmet>
       <h2 className="text-2xl font-bold mb-4">Withdraw Coins</h2>
       <p className="mb-2">
         Current Coins:{" "}

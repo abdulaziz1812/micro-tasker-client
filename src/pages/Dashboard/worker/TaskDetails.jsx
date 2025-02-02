@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../../hook/useAuth";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const TaskDetails = () => {
    const task = useLoaderData();
@@ -76,7 +77,9 @@ console.log(submission);
 
   return (
     <div className="p-6">
-      
+      <Helmet>
+                      <title>Task-Details | Micro Tasker</title>
+                    </Helmet>
       <div className="hero bg-base-100 rounded-2xl shadow-2xl ">
         <div className="hero-content flex-col lg:flex-row gap-8">
           <img

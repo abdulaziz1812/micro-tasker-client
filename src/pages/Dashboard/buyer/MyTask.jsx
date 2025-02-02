@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hook/useAxiosPublic";
 import useCoin from "../../../hook/useCoin";
+import { Helmet } from "react-helmet-async";
 
 const MyTask = () => {
   const { user: currentUser } = useAuth();
@@ -120,7 +121,10 @@ const MyTask = () => {
   };
 
   return (
-    <div className="p-6 m-8 rounded-2xl shadow-2xl border border-gray-200">
+    <div className="p-6 m-8 rounded-2xl shadow-2xl border w-full border-gray-200">
+      <Helmet>
+                      <title>My Task | Micro Tasker</title>
+                    </Helmet>
       <h2 className="text-2xl font-bold mb-4">My Tasks</h2>
 
       <div className="overflow-x-auto">

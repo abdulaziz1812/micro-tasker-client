@@ -1,6 +1,7 @@
 
 import { useNavigate } from "react-router-dom";
 import coin from "../../../assets/coin.gif"
+import { Helmet } from "react-helmet-async";
 
 const coinPackages = [
   { coins: 10, price: 1 },
@@ -18,6 +19,9 @@ function PurchaseCoins() {
 
   return (
     <div className="p-6 m-10 rounded-2xl w-full shadow-2xl border border-gray-200">
+      <Helmet>
+                      <title>Purchase Coin| Micro Tasker</title>
+                    </Helmet>
       <h2 className="text-2xl font-bold mb-8">Purchase Coins</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {coinPackages.map((pkg, index) => (

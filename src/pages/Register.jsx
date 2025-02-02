@@ -1,157 +1,124 @@
 import { useState } from "react";
-
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Lottie from "lottie-react";
 import regLottieData from "../assets/lotties/reg.json";
 import { Helmet } from "react-helmet-async";
-
 import useAuth from "../hook/useAuth";
 import SocialLogin from "./SocialLogin";
 import axios from "axios";
+import useAxiosPublic from "../hook/useAxiosPublic";
 
 const Register = () => {
   const { createUser, setUser, updateUserProfile } = useAuth();
   const [error, setError] = useState({});
   const navigate = useNavigate();
+  const location = useLocation();
+  const axiosPublic = useAxiosPublic();
+
+  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+  
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   const passwordValidation = (password) => {
-    const upperCase = /[A-Z]/.test(password);
-    const lowerCase = /[a-z]/.test(password);
-    const length = password.length >= 6;
-
-    if (!upperCase) {
-      return "Password must include an uppercase letter.";
-    }
-    if (!lowerCase) {
-      return "Password must include a lowercase letter.";
-    }
-    if (!length) {
-      return "Password must be at least 6 characters long.";
-    }
+    if (!/[A-Z]/.test(password)) {
+      return "Password must include an uppercase letter."};
+    if (!/[a-z]/.test(password)) {
+      return "Password must include a lowercase letter."};
+    if (password.length < 6){ 
+      return "Password must be at least 6 characters long."};
     return null;
   };
 
-  const handelSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError({});
+
     const formData = new FormData(e.target);
-
-    const initialData = Object.fromEntries(formData.entries());
-    initialData;
-    console.log(initialData);
-
-    const { name, email, photo, role, password } = initialData;
-
-    const coin = (role === "Worker" ? 10 : 50)
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const role = formData.get("role");
+    const password = formData.get("password");
+    const imageFile = e.target.photo.files[0];
 
     const passwordError = passwordValidation(password);
-    passwordError;
     if (passwordError) {
       setError({ password: passwordError });
-      error;
       return;
     }
 
-    createUser(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user ,role);
-        
-        setUser(user);
-        if (result.user.uid) {
-          axios
-            .post("http://localhost:5000/user",
-               { name, email, photo, role ,coin}
-            )
-            .then((result) => {
-              
-            })
-            .catch((error) => {
-              
-            });
+    try {
+      
+      const imageData = new FormData();
+      imageData.append("image", imageFile);
 
-          Swal.fire({
-            title: "Registration successful! ",
-            icon: "success",
-            draggable: true,
-          });
-          e.target.reset();
-          navigate(location?.state ? location.state : "/");
-          setError({});
-        }
-        result;
-        updateUserProfile({ displayName: name, photoURL: photo })
-          .then((res) => {})
-          .catch((err) => {});
-      })
-      .catch((err) => {
-        setError({ reg: err.code });
+      const res = await axiosPublic.post(image_hosting_api, imageData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
 
-    setError({});
+      const photo = res.data.data.display_url;
+      const coin = role === "Worker" ? 10 : 50;
+
+      
+      const userCredential = await createUser(email, password);
+      const user = userCredential.user;
+      setUser(user);
+
+      
+      await updateUserProfile({ displayName: name, photoURL: photo });
+
+      
+      await axios.post("http://localhost:5000/user", { name, email, photo, role, coin });
+
+      Swal.fire({
+        title: "Registration successful!",
+        icon: "success",
+        draggable: true,
+      });
+
+      e.target.reset();
+      navigate(location.state ? location.state : "/");
+    } catch (err) {
+      setError({ reg: err.message || "Registration failed!" });
+    }
   };
 
   return (
     <div>
       <Helmet>
-        <title>Reg | Micro Tasker</title>
+        <title>Register | Micro Tasker</title>
       </Helmet>
       <div className="hero bg-base-200 min-h-screen pb-8">
         <div>
-          <h1 className="text-5xl font-bold text-center py-8 ">
-            Register now!
-          </h1>
+          <h1 className="text-5xl font-bold text-center py-8">Register now!</h1>
           <div className="hero-content flex-col gap-10 lg:flex-row">
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
-              <form className="card-body pb-0" onSubmit={handelSubmit}>
+            {/* Registration Form */}
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <form className="card-body pb-0" onSubmit={handleSubmit}>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Name</span>
                   </label>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    className="input input-bordered"
-                    name="name"
-                    required
-                  />
+                  <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
                   </label>
-                  <input
-                    type="email"
-                    placeholder="email"
-                    className="input input-bordered"
-                    name="email"
-                    required
-                  />
+                  <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">PhotoURL</span>
+                    <span className="label-text">Photo</span>
                   </label>
-                  <input
-                    type="url"
-                    placeholder="PhotoURL"
-                    className="input input-bordered"
-                    name="photo"
-                    required
-                  />
+                  <input type="file" name="photo" className="file-input" required />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Select the role</span>
                   </label>
-                  <select
-                    defaultValue=""
-                    className="select select-success"
-                    name="role"
-                    required
-                  >
-                    <option value="" disabled className="text-[#8a8a8a]" >
+                  <select name="role" className="select select-success" required>
+                    <option value="" disabled>
                       Select a Role
                     </option>
                     <option>Worker</option>
@@ -162,50 +129,29 @@ const Register = () => {
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input
-                    type="password"
-                    placeholder="password"
-                    className="input input-bordered"
-                    name="password"
-                    required
-                  />
-                  <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">
-                      Forgot password?
-                    </a>
-                  </label>
+                  <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
+                  {error.password && <label className="label text-xs text-red-500">{error.password}</label>}
                 </div>
-                {error.password && (
-                  <label className="label text-xs text-red-500">
-                    {error.password}
-                  </label>
-                )}
                 <div className="form-control mt-6">
-                  <button className="btn btn-success w-full text-white">
-                    Register
-                  </button>
+                  <button className="btn btn-success w-full text-white">Register</button>
                 </div>
-                {error.reg && (
-                  <label className="label text-sm text-red-500">
-                    {error.reg}
-                  </label>
-                )}
+                {error.reg && <label className="label text-sm text-red-500">{error.reg}</label>}
               </form>
               <div className="px-8 pb-8">
                 <div className="divider">OR</div>
-                <SocialLogin></SocialLogin>
+                <SocialLogin />
               </div>
               <p className="text-center font-semibold pb-9">
-                Already have an account ?{" "}
+                Already have an account?{" "}
                 <Link className="text-red-500" to="/login">
                   Login
                 </Link>
               </p>
             </div>
+
+            
             <div>
-              <div className="">
-                <Lottie animationData={regLottieData}></Lottie>
-              </div>
+              <Lottie animationData={regLottieData} />
             </div>
           </div>
         </div>

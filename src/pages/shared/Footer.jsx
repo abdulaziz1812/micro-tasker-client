@@ -1,3 +1,4 @@
+import { Link, NavLink } from "react-router-dom";
 import logo from"../../assets/Logo.png"
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -20,9 +21,10 @@ const Footer = () => {
         <nav>
           <h6 className="footer-title">Social</h6>
           <div className="grid grid-flow-col gap-4">
-            <FaGithub className="text-3xl"/>
-            <FaLinkedin className="text-3xl"/>
-            <FaFacebook className="text-3xl"/>        
+            <NavLink 
+            to="https://github.com/abdulaziz1812/"><FaGithub className="text-3xl"/></NavLink>
+            <NavLink to="https://www.linkedin.com/in/abdul-aziz-abdul-mannan/"><FaLinkedin className="text-3xl"/></NavLink>
+            <NavLink to="https://www.facebook.com/shadow.soul2011/"><FaFacebook className="text-3xl"/></NavLink>        
           </div>
         </nav>
       </footer>

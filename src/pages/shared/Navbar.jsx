@@ -18,11 +18,11 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard" className="">
+        <div>
           Available coin:{" "}
           {isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}
           <img src={coin} alt=""  className="w-5 rounded-full"/>
-        </NavLink>
+        </div>
       </li>
     </>
   );

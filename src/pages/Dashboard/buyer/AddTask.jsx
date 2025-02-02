@@ -4,6 +4,7 @@ import useAuth from "../../../hook/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import useCoin from "../../../hook/useCoin";
+import { Helmet } from "react-helmet-async";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -93,6 +94,9 @@ const AddTask = () => {
 
   return (
     <div className="p-6 w-full">
+      <Helmet>
+                      <title>Add TAsk | Micro Tasker</title>
+                    </Helmet>
       <h2 className="text-2xl font-bold mb-4 w-full">Add New Task</h2>
       <div>
         <div className="flex-col lg:flex-row w-full">

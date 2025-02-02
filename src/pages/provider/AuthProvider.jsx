@@ -35,36 +35,16 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      currentUser?.email;
-      if (currentUser?.email) {
-        const user = { email: currentUser.email };
+      if(currentUser){
 
-        axios
-          .post(
-            "https://service-review-system-server-beta.vercel.app/jwt",
-            user,
-            { withCredentials: true }
-          )
-          .then((res) => {
-            res.data;
-            setLoading(false);
-          });
-      } else {
-        axios
-          .post(
-            "https://service-review-system-server-beta.vercel.app/logout",
-            {},
-            { withCredentials: true }
-          )
-
-          .then((res) => {
-            "logout", res.data;
-            setLoading(false);
-          });
       }
-    });
-
-    return () => {
+      else{
+        
+      }
+       setLoading(false);
+          });
+      
+   return () => {
       unsubscribe();
     };
   }, []);
