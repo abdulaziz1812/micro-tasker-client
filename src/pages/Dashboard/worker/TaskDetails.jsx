@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../../hook/useAuth";
@@ -10,6 +10,7 @@ const TaskDetails = () => {
    console.log(task);
   const { user: currentUser } = useAuth();
   const axiosSecure = useAxiosSecure()
+  const navigate = useNavigate()
   
   const { register, handleSubmit, reset } = useForm();
 
@@ -69,7 +70,7 @@ console.log(submission);
           timer: 1500,
         });
         reset(); 
-      
+        navigate('/dashboard/worker/my-submissions')
         }
   };
 

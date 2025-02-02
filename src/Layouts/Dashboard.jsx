@@ -12,20 +12,20 @@ const Dashboard = () => {
 
   const links = {
     Buyer: [
-      { name: "Buyer Home", path: "/dashboard/buyer/home" },
+      { name: "Buyer Home", path: "/dashboard/buyer/buyer-home" },
       { name: "Add new Tasks", path: "/dashboard/buyer/add-task" },
       { name: "My Tasks", path: "/dashboard/buyer/my-tasks" },
       { name: "Purchase Coin", path: "/dashboard/buyer/purchase-coin" },
       { name: "Payment History", path: "/dashboard/buyer/payment-history" },
     ],
     Worker: [
-      { name: "Worker Home", path: "/dashboard/worker/home" },
+      { name: "Worker Home", path: "/dashboard/worker/worker-home" },
       { name: "Task List", path: "/dashboard/worker/task-list" },
       { name: "My Submissions", path: "/dashboard/worker/my-submissions" },
       { name: "Withdrawals", path: "/dashboard/worker/withdrawals" },
     ],
     Admin: [
-      { name: "Admin Home", path: "/dashboard/admin/home" },
+      { name: "Admin Home", path: "/dashboard/admin/admin-home" },
       { name: "Manage Users", path: "/dashboard/admin/manage-users" },
       { name: "Manage Tasks", path: "/dashboard/admin/manage-tasks" },
     ],

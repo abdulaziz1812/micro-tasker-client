@@ -32,7 +32,7 @@ const MySubmissions = () => {
     }
   }, [email, axiosSecure]);
 
-  // Function to determine CSS classes for the status cell
+  
   const statusClass = (status) => {
     switch (status.toLowerCase()) {
       case "approved":

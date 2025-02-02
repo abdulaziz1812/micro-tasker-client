@@ -50,10 +50,8 @@ const Withdraw = () => {
         timer: 1500,
       });
 
-      const updatedCoins = coin - withdrawCoin;
-      await axiosSecure.patch(`/user/${currentUser?.email}`, {
-        coin: updatedCoins,
-      });
+      // const updatedCoins = coin - withdrawCoin;
+      // await axiosSecure.patch(`/user/${currentUser?.email}`, {coin: updatedCoins});
       refetch()
       reset();
       setWithdrawCoin(200);

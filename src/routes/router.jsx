@@ -16,6 +16,11 @@ import TaskList from "../pages/Dashboard/worker/TaskList";
 import TaskDetails from "../pages/Dashboard/worker/TaskDetails";
 import MySubmissions from "../pages/Dashboard/worker/MySubmissions";
 import Withdraw from "../pages/Dashboard/worker/Withdraw";
+import AdminHome from "../pages/Dashboard/admin/AdminHome";
+import ManageUsers from "../pages/Dashboard/admin/ManageUsers";
+import ManageTasks from "../pages/Dashboard/admin/ManageTasks";
+import BuyerHome from "../pages/Dashboard/buyer/BuyerHome";
+import WorkerHome from "../pages/Dashboard/worker/WorkerHome";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "buyer/buyer-home",
-        
+        element:<BuyerHome></BuyerHome>
       },
 
       {
@@ -79,7 +84,7 @@ const router = createBrowserRouter([
       // Worker 
       {
         path: "worker/worker-home",
-        
+        element: <WorkerHome></WorkerHome>
       },
       {
         path: "worker/task-list",
@@ -98,17 +103,18 @@ const router = createBrowserRouter([
         path: "worker/withdrawals",
         element:<Withdraw></Withdraw>
       },
-      // Admin Routes
+      // Admin 
       {
         path: "admin/admin-home",
-        
+        element: <AdminHome></AdminHome>
       },
       {
         path: "admin/manage-users",
-        
+        element:<ManageUsers></ManageUsers>
       },
       {
         path: "admin/manage-tasks",
+        element:<ManageTasks></ManageTasks>
        
       },
     ],

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const SocialLogin = () => {
   const { googleLogin, setUser } = useAuth();

@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hook/useAxiosPublic";
 import useCoin from "../../../hook/useCoin";
 
-function MyTasks() {
+const MyTask = () => {
   const { user: currentUser } = useAuth();
   const email = currentUser?.email;
   console.log(email);
@@ -17,7 +17,7 @@ function MyTasks() {
 
   
 
-  // Fetch tasks from MongoDB
+  
   useEffect(() => {
     axios.get(`http://localhost:5000/tasks/${email}`).then((res) => {
       const sortedTasks = [...res.data].sort(
@@ -41,13 +41,13 @@ function MyTasks() {
     });
   };
 
-  // Handle Input Change for Updating Task
+  
   const openUpdateModal = (task) => {
     setSelectedTask(task);
     document.getElementById("my_modal_1").showModal();
   };
 
-  // Handle Update Task
+  
   const axiosPublic = useAxiosPublic();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
@@ -77,7 +77,7 @@ function MyTasks() {
     }
     reset()
   };
-  // Handle Delete Task
+  
   const handleDelete = async (task) => {
 
     Swal.fire({
@@ -120,7 +120,7 @@ function MyTasks() {
   };
 
   return (
-    <div className="p-4 m-8 rounded-2xl shadow-2xl ">
+    <div className="p-6 m-8 rounded-2xl shadow-2xl border border-gray-200">
       <h2 className="text-2xl font-bold mb-4">My Tasks</h2>
 
       <div className="overflow-x-auto">
@@ -147,7 +147,7 @@ function MyTasks() {
                   <div className="avatar">
                     <div className="mask mask-squircle h-12 w-12">
                       <img
-                        src={task.task_image_url}
+                        src={task.task_image}
                         alt="Avatar Tailwind CSS Component"
                       />
                     </div>
@@ -249,4 +249,4 @@ function MyTasks() {
   );
 }
 
-export default MyTasks;
+export default MyTask;

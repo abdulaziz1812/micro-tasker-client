@@ -27,9 +27,9 @@ const PaymentHistory = () => {
     });
   };
   return (
-    <div className="m-10">
-      <div className="overflow-x-auto p-6 rounded shadow-2xl">
-        <table className="table table-zebra">
+    <div className="m-10 w-full" >
+      <div className="overflow-x-auto p-6 rounded shadow-2xl border border-gray-200">
+        <table className="table table-zebra ">
           {/* head */}
           <thead>
             <tr className="text-center">
@@ -42,6 +42,7 @@ const PaymentHistory = () => {
           <tbody>
             {payments.map((payment, index) =><tr
             key={payment._id}
+            className="text-center"
             >
               <td>{index+1}</td>
               <td>$ {payment.price}</td>

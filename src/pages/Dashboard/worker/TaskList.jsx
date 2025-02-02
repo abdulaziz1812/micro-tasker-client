@@ -14,7 +14,7 @@ const TaskList = () => {
 
   const fetchAvailableTasks = async () => {
     try {
-      const res = await axiosSecure.get("/tasks/available"); // Fetch tasks where required_workers > 0
+      const res = await axiosSecure.get("/tasks/available"); 
       setTasks(res.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
