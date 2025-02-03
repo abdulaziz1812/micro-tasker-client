@@ -14,10 +14,10 @@ const CheckoutFrom = () => {
   const axiosSecure = useAxiosSecure();
   const location = useLocation();
   const { user: currentUser } = useAuth();
-  const email= currentUser.email
+  const email = currentUser.email;
   const pkgPrice = location.state?.price;
   const [transactionId, setTransactionId] = useState("");
- const navigate =useNavigate()
+  const navigate = useNavigate();
   const { user, refetch } = useCoin(email);
   const coin = user?.coin;
 
@@ -86,8 +86,7 @@ const CheckoutFrom = () => {
         const res = await axiosSecure.post("/payments", payment);
         // console.log("payment res", res.data);
         if (res.data?.insertedId) {
-          
-// console.log(pkgPrice);
+          // console.log(pkgPrice);
           let newCoins = 0;
           if (pkgPrice === 1) newCoins = 10;
           if (pkgPrice === 10) newCoins = 150;
@@ -105,15 +104,14 @@ const CheckoutFrom = () => {
             timer: 1500,
           });
 
-          refetch()
-          navigate('/dashboard/buyer/payment-history')
+          refetch();
+          navigate("/dashboard/buyer/payment-history");
         }
       }
     }
   };
   return (
     <div className="overflow-x-auto">
-      
       <form
         className="p-10 min-w-2xl m-8 rounded-2xl shadow-2xl "
         onSubmit={handleSubmit}

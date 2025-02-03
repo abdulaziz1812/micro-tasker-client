@@ -7,10 +7,10 @@ const MySubmissions = () => {
   const { user: currentUser } = useAuth();
   const email = currentUser.email;
   const axiosSecure = useAxiosSecure();
-  
+
   const [submissions, setSubmissions] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; 
+  const itemsPerPage = 5;
   useEffect(() => {
     if (email) {
       axiosSecure.get(`/submissions/${email}`).then((res) => {
@@ -19,10 +19,12 @@ const MySubmissions = () => {
     }
   }, [email, axiosSecure]);
 
-  
   const totalPages = Math.ceil(submissions.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedSubmissions = submissions.slice(startIndex, startIndex + itemsPerPage);
+  const paginatedSubmissions = submissions.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
 
   const handlePrevious = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
@@ -32,7 +34,6 @@ const MySubmissions = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
-  
   const formatDate = (addedDate) => {
     const newDate = new Date(addedDate);
     return newDate.toLocaleString("en-gb", {
@@ -45,7 +46,6 @@ const MySubmissions = () => {
     });
   };
 
-  
   const statusClass = (status) => {
     switch (status.toLowerCase()) {
       case "approved":
@@ -65,7 +65,7 @@ const MySubmissions = () => {
       </Helmet>
 
       <h2 className="text-2xl font-bold mb-4">My Submissions</h2>
-      
+
       <div className="overflow-x-auto p-6 shadow-2xl rounded-2xl">
         <table className="table table-zebra">
           <thead>
@@ -84,7 +84,9 @@ const MySubmissions = () => {
                   <td>{startIndex + index + 1}</td>
                   <td>{submission.task_title}</td>
                   <td>{submission.submission_details}</td>
-                  <td className={statusClass(submission.status)}>{submission.status}</td>
+                  <td className={statusClass(submission.status)}>
+                    {submission.status}
+                  </td>
                   <td>{formatDate(submission.current_date)}</td>
                 </tr>
               ))
@@ -99,12 +101,11 @@ const MySubmissions = () => {
         </table>
       </div>
 
-      
       <div className="flex justify-center items-center mt-4 join">
-        <button 
-          onClick={handlePrevious} 
+        <button
+          onClick={handlePrevious}
           disabled={currentPage === 1}
-          className={'join-item btn'}
+          className={"join-item btn"}
         >
           Previous
         </button>
@@ -113,10 +114,10 @@ const MySubmissions = () => {
           Page {currentPage} of {totalPages}
         </span>
 
-        <button 
-          onClick={handleNext} 
+        <button
+          onClick={handleNext}
           disabled={currentPage === totalPages}
-          className={'join-item btn'}
+          className={"join-item btn"}
         >
           Next
         </button>

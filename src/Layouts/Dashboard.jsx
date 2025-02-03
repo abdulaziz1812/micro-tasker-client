@@ -41,12 +41,10 @@ const Dashboard = () => {
         <title>Dashboard | Micro Tasker</title>
       </Helmet>
       <div className="flex flex-col md:flex-row justify-between items-center md:p-4">
-      
         <Link to="/" className="flex justify-center md:justify-start">
           <img className="w-16 md:w-28" src={logo} alt="Logo" />
         </Link>
 
-       
         <div className="flex flex-col md:flex-row gap-6 items-center md:items-center md:gap-12">
           <div className="flex items-center">
             <h3 className="text-xs lg:text-lg font-medium">Available Coin:</h3>
@@ -56,7 +54,6 @@ const Dashboard = () => {
             <img src={coin} alt="Coin" className="w-6 ml-2" />
           </div>
 
-         
           <div className="flex flex-col text-right">
             <h3 className="text-xs lg:text-lg">
               <strong>Role:</strong> {user?.role || "Loading..."}
@@ -66,7 +63,6 @@ const Dashboard = () => {
             </h3>
           </div>
 
-          
           <div
             tabIndex={0}
             role="button"
@@ -76,26 +72,34 @@ const Dashboard = () => {
             <div className="rounded-full w-12 h-12">
               <img
                 alt="Profile"
-                src={currentUser?.photoURL || "https://img.icons8.com/?size=48&id=O9K5DaypaVKw&format=gif"}
+                src={
+                  currentUser?.photoURL ||
+                  "https://img.icons8.com/?size=48&id=O9K5DaypaVKw&format=gif"
+                }
               />
             </div>
           </div>
 
-          
           <div>
-            <img src={notification} alt="Notification Icon" className="w-8 h-8" />
+            <img
+              src={notification}
+              alt="Notification Icon"
+              className="w-8 h-8"
+            />
           </div>
         </div>
       </div>
 
-      
       <div className="flex flex-col lg:flex-row mb-10 shadow-2xl rounded-2xl overflow-hidden">
         {/* Sidebar */}
         <div className=" bg-green-200 rounded-t-2xl lg:rounded-l-2xl lg:w-fit p-4">
           <ul className="menu space-y-2 w-full">
             {navigationLinks.map((link, index) => (
               <li key={index}>
-                <NavLink to={link.path} className="btn btn-xs btn-success text-center whitespace-nowrap">
+                <NavLink
+                  to={link.path}
+                  className="btn btn-xs btn-success text-center whitespace-nowrap"
+                >
                   {link.name}
                 </NavLink>
               </li>
@@ -103,7 +107,6 @@ const Dashboard = () => {
           </ul>
         </div>
 
-       
         <div className=" p-4 w-full">
           <Outlet />
         </div>

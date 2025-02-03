@@ -9,7 +9,7 @@ import SocialLogin from "./SocialLogin";
 import useAuth from "../hook/useAuth";
 
 const Login = () => {
-  const { login, setUser } = useAuth()
+  const { login, setUser } = useAuth();
   const [error, setError] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,7 +39,6 @@ const Login = () => {
         }
         setUser(user);
 
-        
         navigate(from);
       })
       .catch((err) => {

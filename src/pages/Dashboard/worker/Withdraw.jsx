@@ -62,9 +62,14 @@ const Withdraw = () => {
       <Helmet>
         <title>Withdraw | Micro Tasker</title>
       </Helmet>
-      <h2 className="text-lg sm:text-2xl font-bold mb-4 text-center">Withdraw Coins</h2>
+      <h2 className="text-lg sm:text-2xl font-bold mb-4 text-center">
+        Withdraw Coins
+      </h2>
       <p className="text-center mb-2">
-        Current Coins: <strong>{isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}</strong>
+        Current Coins:{" "}
+        <strong>
+          {isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}
+        </strong>
       </p>
       <p className="text-center mb-4">
         Withdrawable Amount: <strong>${(coin / 20).toFixed(2)}</strong>

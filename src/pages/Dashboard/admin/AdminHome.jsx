@@ -8,10 +8,8 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import useAdmin from "../../../hook/useAdmin";
 
-
 const AdminHome = () => {
   const axiosSecure = useAxiosSecure();
-  
 
   const { data: stats } = useQuery({
     queryKey: ["admin-stats"],
@@ -21,7 +19,6 @@ const AdminHome = () => {
     },
   });
 
-  
   const {
     data: withdrawRequests = [],
     refetch,
@@ -34,8 +31,7 @@ const AdminHome = () => {
     },
   });
 
-  
-  const handleApproveWithdraw = async (id, workerEmail, withdrawalCoin ) => {
+  const handleApproveWithdraw = async (id, workerEmail, withdrawalCoin) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You are about to approve this withdrawal request.",
@@ -46,7 +42,6 @@ const AdminHome = () => {
       confirmButtonText: "Yes, approve it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-
         const updatedStatus = { status: "approved" };
         const res = await axiosSecure.put(`/withdrawals/${id}`, updatedStatus);
 
@@ -57,9 +52,10 @@ const AdminHome = () => {
           const currentCoin = userRes.data.coin || 0;
           const updatedCoin = currentCoin - withdrawalCoin;
 
-          
-      await axiosSecure.patch(`/user/${workerEmail}`, {coin: updatedCoin});
-          refetch(); 
+          await axiosSecure.patch(`/user/${workerEmail}`, {
+            coin: updatedCoin,
+          });
+          refetch();
         }
       }
     });
@@ -68,8 +64,8 @@ const AdminHome = () => {
   return (
     <div className="flex flex-col  w-full ">
       <Helmet>
-              <title>Admin Home | Micro Tasker</title>
-            </Helmet>
+        <title>Admin Home | Micro Tasker</title>
+      </Helmet>
       {/* Stats */}
       <div className="stats shadow-2xl m-8 border border-gray-200">
         <div className="stat">
@@ -142,11 +138,13 @@ const AdminHome = () => {
                     <td className="p-2">
                       <button
                         className="btn btn-sm btn-success"
-                        onClick={() => handleApproveWithdraw(
+                        onClick={() =>
+                          handleApproveWithdraw(
                             request._id,
                             request.worker_email,
                             request.withdrawal_coin
-                        )}
+                          )
+                        }
                       >
                         Payment Success
                       </button>

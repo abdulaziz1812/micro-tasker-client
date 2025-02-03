@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import{motion} from "framer-motion"
+import { motion } from "framer-motion";
 
 const BestWorkers = () => {
   const [workers, setWorkers] = useState([]);
@@ -8,7 +8,7 @@ const BestWorkers = () => {
     fetch("http://localhost:5000/best-workers")
       .then((res) => res.json())
       .then((data) => setWorkers(data));
-      // console.log(workers);
+    // console.log(workers);
   }, []);
 
   return (
@@ -16,13 +16,16 @@ const BestWorkers = () => {
       <h2 className="font-bold text-center text-4xl py-6">Best Workers</h2>
       <div className="grid grid-cols-3 gap-6">
         {workers.map((worker, index) => (
-          <motion.div 
-          initial={{opacity:0}}
-          whileInView={{opacity:1}}
-          transition={{
-              duration:.5 ,delay: index * .4 
-          }} 
-          key={index} className="p-4 mx-auto shadow-2xl rounded-2xl border border-gray-200 w-xs text-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: index * 0.4,
+            }}
+            key={index}
+            className="p-4 mx-auto shadow-2xl rounded-2xl border border-gray-200 w-xs text-center"
+          >
             <img
               src={worker.photo}
               alt={worker.name}

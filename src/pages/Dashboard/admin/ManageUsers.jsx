@@ -7,28 +7,32 @@ const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
 
-  
-  const { data: users = [], isLoading, error, refetch } = useQuery({
+  const {
+    data: users = [],
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
       return res.data;
     },
   });
-  
+
   const mutation = useMutation({
     mutationFn: async (id) => {
       return await axiosSecure.delete(`/user/${id}`);
     },
     onSuccess: () => {
-      refetch(); 
+      refetch();
       Swal.fire("Deleted!", "The user has been deleted.", "success");
     },
     onError: () => {
       Swal.fire("Error!", "Failed to delete the user.", "error");
     },
   });
-  
+
   const updateRoleMutation = useMutation({
     mutationFn: async ({ id, role }) => {
       const res = await axiosSecure.patch(`/users/${id}`, { role });
@@ -43,7 +47,6 @@ const ManageUsers = () => {
     },
   });
 
-  
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -52,15 +55,13 @@ const ManageUsers = () => {
       showCancelButton: true,
       confirmButtonText: "Yes, delete it!",
       cancelButtonText: "Cancel",
-    }).then(async(result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        
         mutation.mutate(id);
       }
     });
   };
 
-  
   const handleRoleChange = (id, newRole) => {
     updateRoleMutation.mutate({ id, role: newRole });
   };
@@ -85,9 +86,9 @@ const ManageUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user,index) => (
+            {users.map((user, index) => (
               <tr key={user._id} className="text-center">
-                 <td>{index+1}</td>
+                <td>{index + 1}</td>
                 <td>
                   <img
                     src={user.photo}
@@ -101,7 +102,7 @@ const ManageUsers = () => {
                   <select
                     value={user.role}
                     onChange={(e) => handleRoleChange(user._id, e.target.value)}
-                             >
+                  >
                     <option value="Admin">Admin</option>
                     <option value="Buyer">Buyer</option>
                     <option value="Worker">Worker</option>

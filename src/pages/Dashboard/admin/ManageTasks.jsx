@@ -10,9 +10,9 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 const ManageTasks = () => {
   const { user: currentUser } = useAuth();
   const email = currentUser?.email;
-  
+
   const [tasks, setTasks] = useState([]);
-    const axiosSecure =useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     axios.get(`http://localhost:5000/tasks/available`).then((res) => {
@@ -50,15 +50,14 @@ const ManageTasks = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
-        
       if (result.isConfirmed) {
-        
         await axiosSecure.delete(`/tasks/${task._id}`);
-        
+
         const userRes = await axiosSecure.get(`/user/${task.email}`);
-        const selectedCoin =userRes.data.coin;
-        
-        const totalAmount = parseFloat(task.required_workers) * parseFloat(task.payable_amount);
+        const selectedCoin = userRes.data.coin;
+
+        const totalAmount =
+          parseFloat(task.required_workers) * parseFloat(task.payable_amount);
         const updatedCoins = selectedCoin + totalAmount;
 
         await axiosSecure.patch(`/user/${task.email}`, { coin: updatedCoins });
@@ -70,7 +69,6 @@ const ManageTasks = () => {
           text: "Your file has been deleted.",
           icon: "success",
         });
-        
       }
     });
   };

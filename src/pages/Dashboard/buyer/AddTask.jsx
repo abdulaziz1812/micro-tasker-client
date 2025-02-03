@@ -13,23 +13,18 @@ const AddTask = () => {
   const navigate = useNavigate();
   const { user: currentUser } = useAuth();
   const email = currentUser?.email;
-  const name= currentUser?.displayName
+  const name = currentUser?.displayName;
   const { user, isLoading, error, refetch } = useCoin(email);
   const coin = user?.coin;
-  
- 
-  
-  const { register, handleSubmit,reset } = useForm();
+
+  const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
 
   const onSubmit = async (data) => {
-    
-
     const totalPayableAmount =
       parseFloat(data.required_workers) * parseFloat(data.payable_amount);
     console.log("Total Payable:", totalPayableAmount);
 
-    
     if (coin < totalPayableAmount) {
       Swal.fire({
         title: "Not Enough Coins!",
@@ -42,7 +37,6 @@ const AddTask = () => {
       return;
     }
 
-    
     const existingTaskRes = await axiosPublic.get(
       `/tasks?task_title=${data.task_title}`
     );
@@ -56,7 +50,6 @@ const AddTask = () => {
       return;
     }
 
-    
     const imageFile = new FormData();
     imageFile.append("image", data.task_image[0]);
 
@@ -74,7 +67,7 @@ const AddTask = () => {
         submission_info: data.submission_info,
         task_image: res.data.data.display_url,
         email,
-        name
+        name,
       };
 
       const taskRes = await axiosPublic.post("/tasks", newTask);
@@ -88,8 +81,8 @@ const AddTask = () => {
           icon: "success",
         });
         refetch();
-        reset()
-        navigate('/dashboard/buyer/my-tasks')
+        reset();
+        navigate("/dashboard/buyer/my-tasks");
       }
     }
   };
@@ -97,8 +90,8 @@ const AddTask = () => {
   return (
     <div className="p-6 w-full">
       <Helmet>
-                      <title>Add TAsk | Micro Tasker</title>
-                    </Helmet>
+        <title>Add TAsk | Micro Tasker</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-4 w-full">Add New Task</h2>
       <div>
         <div className="flex-col lg:flex-row w-full">
