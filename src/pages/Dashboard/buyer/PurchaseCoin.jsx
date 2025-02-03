@@ -18,7 +18,7 @@ function PurchaseCoins() {
   };
 
   return (
-    <div className="p-6 m-10 rounded-2xl w-full shadow-2xl border border-gray-200">
+    <div className="p-6 m-10 rounded-2xl  shadow-2xl border border-gray-200">
       <Helmet>
                       <title>Purchase Coin| Micro Tasker</title>
                     </Helmet>

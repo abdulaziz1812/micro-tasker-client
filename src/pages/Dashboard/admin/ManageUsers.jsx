@@ -7,7 +7,7 @@ const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
 
-  // Fetch all users
+  
   const { data: users = [], isLoading, error, refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -29,7 +29,6 @@ const ManageUsers = () => {
     },
   });
   
-  // Mutation to update a user's role
   const updateRoleMutation = useMutation({
     mutationFn: async ({ id, role }) => {
       const res = await axiosSecure.patch(`/users/${id}`, { role });
@@ -44,7 +43,7 @@ const ManageUsers = () => {
     },
   });
 
-  // Handler for deleting a user
+  
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -70,10 +69,10 @@ const ManageUsers = () => {
   if (error) return <p>Error loading users.</p>;
 
   return (
-    <div className="p-6 m-6 rounded-2xl shadow-2xl border border-gray-200 w-full">
+    <div className="p-6 xl:m-6 rounded-2xl shadow-2xl border border-gray-200 lg:w-fit">
       <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
       <div className="overflow-x-auto">
-        <table className="table w-full ">
+        <table className="table  ">
           <thead>
             <tr className="bg-gray-200 text-center">
               <th>Sl no</th>

@@ -9,9 +9,9 @@ import { Helmet } from "react-helmet-async";
 const Withdraw = () => {
   const { user: currentUser } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { user, isLoading, error,refetch } = useCoin(currentUser.email);
-  const coin = user?.coin || 0; // Ensure coin is always a number
-  const { register, handleSubmit, reset,  } = useForm();
+  const { user, isLoading, error, refetch } = useCoin(currentUser.email);
+  const coin = user?.coin || 0;
+  const { register, handleSubmit, reset } = useForm();
 
   const [withdrawCoin, setWithdrawCoin] = useState(200);
   const [paymentSystem, setPaymentSystem] = useState("");
@@ -20,8 +20,6 @@ const Withdraw = () => {
   const withdrawAmount = (withdrawCoin / 20).toFixed(2);
 
   const onSubmit = async (data) => {
-    console.log(data);
-
     if (withdrawCoin > coin) {
       Swal.fire({
         title: "Error",
@@ -51,9 +49,7 @@ const Withdraw = () => {
         timer: 1500,
       });
 
-      // const updatedCoins = coin - withdrawCoin;
-      // await axiosSecure.patch(`/user/${currentUser?.email}`, {coin: updatedCoins});
-      refetch()
+      refetch();
       reset();
       setWithdrawCoin(200);
       setPaymentSystem("");
@@ -62,32 +58,24 @@ const Withdraw = () => {
   };
 
   return (
-    <div className="p-6 w-full">
+    <div className="p-4 sm:p-6 w-full">
       <Helmet>
-                      <title>Withdraw | Micro Tasker</title>
-                    </Helmet>
-      <h2 className="text-2xl font-bold mb-4">Withdraw Coins</h2>
-      <p className="mb-2">
-        Current Coins:{" "}
-        <strong>
-          {isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}
-        </strong>
+        <title>Withdraw | Micro Tasker</title>
+      </Helmet>
+      <h2 className="text-lg sm:text-2xl font-bold mb-4 text-center">Withdraw Coins</h2>
+      <p className="text-center mb-2">
+        Current Coins: <strong>{isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}</strong>
       </p>
-      <p className="mb-4">
+      <p className="text-center mb-4">
         Withdrawable Amount: <strong>${(coin / 20).toFixed(2)}</strong>
       </p>
 
-      <div className="flex-col lg:flex-row w-full">
-        <div className="card bg-base-100 w-full shadow-2xl">
-          <form
-            className="card-body pb-0 w-full grid gap-8 grid-cols-2 mb-8"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+      <div className="flex flex-col items-center w-full">
+        <div className="card bg-base-100 w-full max-w-xl shadow-lg p-4 sm:p-6">
+          <form className="grid gap-4" onSubmit={handleSubmit(onSubmit)}>
             {/* Coin to Withdraw */}
             <div className="form-control">
-              <label className="label mb-2">
-                <span className="label-text">Coin to Withdraw*</span>
-              </label>
+              <label className="label mb-2">Coin to Withdraw*</label>
               <input
                 type="number"
                 min="200"
@@ -101,13 +89,11 @@ const Withdraw = () => {
 
             {/* Withdraw Amount */}
             <div className="form-control">
-              <label className="label mb-2">
-                <span className="label-text">Withdraw Amount ($)</span>
-              </label>
+              <label className="label mb-2">Withdraw Amount ($)</label>
               <input
                 type="number"
                 value={withdrawAmount}
-                className="input input-bordered w-full bg-base-200"
+                className="input input-bordered w-full bg-gray-100"
                 readOnly
                 required
               />
@@ -115,9 +101,7 @@ const Withdraw = () => {
 
             {/* Payment System */}
             <div className="form-control">
-              <label className="label mb-2">
-                <span className="label-text">Select Payment System*</span>
-              </label>
+              <label className="label mb-2">Select Payment System*</label>
               <select
                 className="select select-bordered w-full"
                 value={paymentSystem}
@@ -133,9 +117,7 @@ const Withdraw = () => {
 
             {/* Account Number */}
             <div className="form-control">
-              <label className="label mb-2">
-                <span className="label-text">Account Number:</span>
-              </label>
+              <label className="label mb-2">Account Number:</label>
               <input
                 type="text"
                 value={accountNumber}
@@ -147,15 +129,13 @@ const Withdraw = () => {
             </div>
 
             {/* Withdraw Button */}
-            <div className="col-span-2">
-              <button
-                type="submit"
-                className="btn btn-success w-full"
-                disabled={coin <= 200}
-              >
-                Withdraw
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="btn btn-success w-full"
+              disabled={coin < 200}
+            >
+              Withdraw
+            </button>
           </form>
         </div>
       </div>

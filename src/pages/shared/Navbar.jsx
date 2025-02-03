@@ -7,9 +7,9 @@ import coin from "../../assets/coin.gif"
 const Navbar = () => {
   const { user: currentUser, logout } = useAuth();
   const email = currentUser?.email;
-  console.log(email);
+  // console.log(email);
   const { user, isLoading, error } = useCoin(email);
-  console.log(user);
+  // console.log(user);
   const link = (
     <>
       <li>
@@ -31,11 +31,11 @@ const Navbar = () => {
       <div className="w-11/12 mx-auto ">
         <div className="navbar  text-black">
           <div className="navbar-start">
-            <div className="dropdown">
+            <div className="dropdown ">
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost lg:hidden"
+                className="btn btn-ghost lg:hidden "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +63,7 @@ const Navbar = () => {
               </ul>
             </div>
             <Link to="/">
-              <img className="w-24" src={logo} alt="" />
+              <img className="w-16 lg:w-24" src={logo} alt="" />
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
@@ -91,16 +91,16 @@ const Navbar = () => {
                     />
                   </div>
                 </div>
-                  <button onClick={logout} className="btn btn-success">
+                  <button onClick={logout} className="btn btn-xs md:btn  btn-success">
                     Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <Link to="/login" className="btn btn-success">
+                  <Link to="/login" className="btn btn-success btn-xs md:btn">
                     Login
                   </Link>
-                  <Link to="/register" className="btn btn-success">
+                  <Link to="/register" className="btn btn-success btn-xs md:btn">
                     Register
                   </Link>
                 </>

@@ -11,7 +11,7 @@ const useBuyer = () => {
       queryKey: [user?.email, "isBuyer"],
       queryFn: async () => {
         const res = await axiosSecure.get(`/users/buyer/${user?.email}`);
-        console.log(res.data);
+        // console.log(res.data);
         return res.data?.buyer;
       },
     }

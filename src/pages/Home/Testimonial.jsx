@@ -55,9 +55,6 @@ const Testimonial = () => {
         loop
         spaceBetween={30}
         slidesPerView={1}
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
         className="w-10/12 mx-auto shadow-2xl rounded-2xl"
       >
         {testimonials.map((testimonial) => (

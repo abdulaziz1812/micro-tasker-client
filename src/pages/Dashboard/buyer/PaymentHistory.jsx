@@ -28,7 +28,7 @@ const PaymentHistory = () => {
     });
   };
   return (
-    <div className="m-10 w-full">
+    <div className="m-10 ">
       <Helmet>
         <title>Payment-History | Micro Tasker</title>
       </Helmet>

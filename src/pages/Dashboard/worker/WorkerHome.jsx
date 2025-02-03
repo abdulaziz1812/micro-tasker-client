@@ -22,7 +22,7 @@ const WorkerHome = () => {
     },
     enabled: !!email,
   });
-  console.log(stats);
+  // console.log(stats);
 
   
   const { data: approvedSubmissions = [], refetch } = useQuery({

@@ -1,15 +1,14 @@
-import { Swiper, SwiperSlide } from "swiper/react"; 
-import "swiper/css"; 
-import "swiper/css/pagination"; 
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Navigation, Pagination } from "swiper/modules"; 
-import { motion } from "framer-motion"; 
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { motion } from "framer-motion";
 import banner01 from "../../assets/Banner/01.jpg";
 import banner02 from "../../assets/Banner/2.jpg";
 import banner03 from "../../assets/Banner/3.jpg";
 
 const Banner = () => {
-    
   return (
     <div className="relative">
       <Swiper
@@ -29,7 +28,6 @@ const Banner = () => {
               alt="Slide 1"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-    
               <div className="absolute inset-0 bg-black opacity-70"></div>
               <motion.h1
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -47,7 +45,6 @@ const Banner = () => {
           </div>
         </SwiperSlide>
 
-    
         <SwiperSlide>
           <div className="relative h-[400px]">
             <img
@@ -56,9 +53,8 @@ const Banner = () => {
               alt="Slide 2"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-           
               <div className="absolute inset-0 bg-black opacity-70"></div>
-           
+
               <motion.h1
                 initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -74,7 +70,6 @@ const Banner = () => {
           </div>
         </SwiperSlide>
 
-     
         <SwiperSlide>
           <div className="relative h-[400px]">
             <img
@@ -83,9 +78,8 @@ const Banner = () => {
               alt="Slide 3"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-          
               <div className="absolute inset-0 bg-black opacity-70"></div>
-        
+
               <motion.h1
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

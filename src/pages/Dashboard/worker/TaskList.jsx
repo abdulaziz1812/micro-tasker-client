@@ -42,7 +42,7 @@ const TaskList = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {tasks.map((task) => (
             
-            <div key={task._id} className="card bg-base-100 w-96 shadow-sm">
+            <div key={task._id} className="card bg-base-100  shadow-sm">
             <div className="card-body">
               <h2 className="card-title">{task.task_title}</h2>
               <p className="text-gray-600">Buyer: {task.name}</p>

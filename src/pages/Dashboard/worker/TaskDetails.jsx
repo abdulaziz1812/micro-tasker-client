@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 
 const TaskDetails = () => {
    const task = useLoaderData();
-   console.log(task);
+  //  console.log(task);
   const { user: currentUser } = useAuth();
   const axiosSecure = useAxiosSecure()
   const navigate = useNavigate()
@@ -29,14 +29,14 @@ const TaskDetails = () => {
   
 
   const onSubmit = async (data) => {
-    console.log("Form Data:", data);
+    
     
     const existingSubmission = await axiosSecure.get(
         `/submissions?task_id=${task._id}&worker_email=${currentUser.email}`
       );
 
 
-      console.log(existingSubmission.data);
+      // console.log(existingSubmission.data);
       if (existingSubmission.data.length>0) {
         Swal.fire({
           title: "Duplicate Task!",
@@ -59,10 +59,10 @@ const TaskDetails = () => {
       current_date: new Date(),
       status: "pending",
     };
-console.log(submission);
+// console.log(submission);
     
       const res = await axiosSecure.post("/submissions", submission);
-      console.log("Submission response:", res.data);
+      // console.log("Submission response:", res.data);
       if (res.data.insertedId) {
         Swal.fire({
           icon: "success",

@@ -18,12 +18,12 @@ const AddTask = () => {
   const coin = user?.coin;
   
  
-  console.log(currentUser);
+  
   const { register, handleSubmit,reset } = useForm();
   const axiosPublic = useAxiosPublic();
 
   const onSubmit = async (data) => {
-    console.log("Form Data:", data);
+    
 
     const totalPayableAmount =
       parseFloat(data.required_workers) * parseFloat(data.payable_amount);
@@ -104,7 +104,7 @@ const AddTask = () => {
         <div className="flex-col lg:flex-row w-full">
           <div className="card bg-base-100 w-full shadow-2xl border border-gray-200">
             <form
-              className="card-body pb-0 w-full grid gap-8 grid-cols-2 mb-8"
+              className="card-body pb-0 w-full grid gap-8 lg:grid-cols-2 mb-8"
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className="form-control">

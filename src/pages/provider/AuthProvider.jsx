@@ -75,7 +75,7 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  console.log(user);
+  // console.log(user);
 
   const authInfo = {
     user,

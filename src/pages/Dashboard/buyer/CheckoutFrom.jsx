@@ -26,7 +26,7 @@ const CheckoutFrom = () => {
       axiosSecure
         .post("/create-payment-intent", { price: pkgPrice })
         .then((res) => {
-          console.log(res.data.clientSecret);
+          // console.log(res.data.clientSecret);
           setClientSecret(res.data.clientSecret);
         });
     }
@@ -51,10 +51,10 @@ const CheckoutFrom = () => {
     });
 
     if (error) {
-      console.log("payment", error);
+      // console.log("payment", error);
       setError(error.message);
     } else {
-      console.log("payment method", paymentMethod);
+      // console.log("payment method", paymentMethod);
       setError("");
     }
 
@@ -70,11 +70,11 @@ const CheckoutFrom = () => {
       });
 
     if (confirmError) {
-      console.log("confirm error");
+      // console.log("confirm error");
     } else {
-      console.log("payment intent", paymentIntent);
+      // console.log("payment intent", paymentIntent);
       if (paymentIntent.status === "succeeded") {
-        console.log("transaction ID", paymentIntent.id);
+        // console.log("transaction ID", paymentIntent.id);
         setTransactionId(paymentIntent.id);
 
         const payment = {
@@ -84,10 +84,10 @@ const CheckoutFrom = () => {
           date: new Date(),
         };
         const res = await axiosSecure.post("/payments", payment);
-        console.log("payment res", res.data);
+        // console.log("payment res", res.data);
         if (res.data?.insertedId) {
           
-console.log(pkgPrice);
+// console.log(pkgPrice);
           let newCoins = 0;
           if (pkgPrice === 1) newCoins = 10;
           if (pkgPrice === 10) newCoins = 150;
@@ -112,10 +112,10 @@ console.log(pkgPrice);
     }
   };
   return (
-    <div>
+    <div className="overflow-x-auto">
       
       <form
-        className="p-10 min-w-2xl m-8 rounded-2xl shadow-2xl"
+        className="p-10 min-w-2xl m-8 rounded-2xl shadow-2xl "
         onSubmit={handleSubmit}
       >
         <CardElement

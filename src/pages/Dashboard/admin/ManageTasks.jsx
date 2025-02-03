@@ -10,7 +10,7 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 const ManageTasks = () => {
   const { user: currentUser } = useAuth();
   const email = currentUser?.email;
-  console.log(email);
+  
   const [tasks, setTasks] = useState([]);
     const axiosSecure =useAxiosSecure()
 
@@ -25,7 +25,7 @@ const ManageTasks = () => {
     });
   }, []);
 
-  console.log(tasks);
+  // console.log(tasks);
 
   const date = (completion_date) => {
     const newDate = new Date(completion_date);
@@ -40,7 +40,7 @@ const ManageTasks = () => {
   };
 
   const handleDelete = async (task) => {
-    console.log(task);
+    // console.log(task);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -76,11 +76,11 @@ const ManageTasks = () => {
   };
 
   return (
-    <div className="p-4 m-8 rounded-2xl shadow-2xl border border-gray-200 ">
+    <div className="p-4 xl:m-8 rounded-2xl shadow-2xl border border-gray-200 lg:w-10/12 ">
       <h2 className="text-2xl font-bold mb-4">Manage Tasks</h2>
 
       <div className="overflow-x-auto">
-        <table className="table w-full border border-gray-200">
+        <table className="table border border-gray-200">
           {/* head */}
           <thead className="text-center">
             <tr className="bg-gray-200">

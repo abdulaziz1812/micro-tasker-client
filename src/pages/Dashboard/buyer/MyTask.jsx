@@ -10,15 +10,12 @@ import { Helmet } from "react-helmet-async";
 const MyTask = () => {
   const { user: currentUser } = useAuth();
   const email = currentUser?.email;
-  console.log(email);
+  // console.log(email);
   const [tasks, setTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState({});
   const { user, isLoading, error, refetch } = useCoin(email);
   const coin = user?.coin;
 
-  
-
-  
   useEffect(() => {
     axios.get(`http://localhost:5000/tasks/${email}`).then((res) => {
       const sortedTasks = [...res.data].sort(
@@ -42,17 +39,15 @@ const MyTask = () => {
     });
   };
 
-  
   const openUpdateModal = (task) => {
     setSelectedTask(task);
     document.getElementById("my_modal_1").showModal();
   };
 
-  
   const axiosPublic = useAxiosPublic();
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
 
     const updatedTask = {
       task_title: data.task_title,
@@ -76,11 +71,10 @@ const MyTask = () => {
       );
       document.getElementById("my_modal_1").close();
     }
-    reset()
+    reset();
   };
-  
-  const handleDelete = async (task) => {
 
+  const handleDelete = async (task) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -88,43 +82,34 @@ const MyTask = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then( async (result) => {
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
       if (result.isConfirmed) {
+        await axiosPublic.delete(`/tasks/${task._id}`);
 
-        await axiosPublic.delete(`/tasks/${task._id}`)
-          
-
-            const totalAmount =
-        parseFloat(task.required_workers) * parseFloat(task.payable_amount);
+        const totalAmount =
+          parseFloat(task.required_workers) * parseFloat(task.payable_amount);
         const updatedCoins = coin + totalAmount;
 
         await axiosPublic.patch(`/user/${email}`, { coin: updatedCoins });
 
-
-            const remainingTasks = tasks.filter(
-              (t) => t._id !== task._id
-            )
-                        setTasks(remainingTasks);
-                        Swal.fire({
-                          title: "Deleted!",
-                          text: "Your file has been deleted.",
-                          icon: "success"
-                        });
-                        refetch();
-          
+        const remainingTasks = tasks.filter((t) => t._id !== task._id);
+        setTasks(remainingTasks);
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+        refetch();
       }
-    })
-
-
-   
+    });
   };
 
   return (
-    <div className="p-6 m-8 rounded-2xl shadow-2xl border w-full border-gray-200">
+    <div className="p-6 m-8 rounded-2xl shadow-2xl border lg:w-9/12  border-gray-200">
       <Helmet>
-                      <title>My Task | Micro Tasker</title>
-                    </Helmet>
+        <title>My Task | Micro Tasker</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-4">My Tasks</h2>
 
       <div className="overflow-x-auto">
@@ -183,7 +168,6 @@ const MyTask = () => {
           {/* foot */}
         </table>
       </div>
-
 
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       {/* <button
@@ -251,6 +235,6 @@ const MyTask = () => {
       </dialog>
     </div>
   );
-}
+};
 
 export default MyTask;

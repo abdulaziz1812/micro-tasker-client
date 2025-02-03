@@ -8,7 +8,7 @@ const BestWorkers = () => {
     fetch("http://localhost:5000/best-workers")
       .then((res) => res.json())
       .then((data) => setWorkers(data));
-      console.log(workers);
+      // console.log(workers);
   }, []);
 
   return (
