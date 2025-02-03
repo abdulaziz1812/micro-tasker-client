@@ -65,26 +65,46 @@ const router = createBrowserRouter([
           </BuyerRoute>
         ),
       },
-      
+
       {
         path: "buyer/add-task",
-        element: <BuyerRoute><AddTask></AddTask></BuyerRoute>,
+        element: (
+          <BuyerRoute>
+            <AddTask></AddTask>
+          </BuyerRoute>
+        ),
       },
       {
         path: "buyer/my-tasks",
-        element: <BuyerRoute><MyTask></MyTask></BuyerRoute>,
+        element: (
+          <BuyerRoute>
+            <MyTask></MyTask>
+          </BuyerRoute>
+        ),
       },
       {
         path: "buyer/purchase-coin",
-        element: <BuyerRoute><PurchaseCoin></PurchaseCoin></BuyerRoute>,
+        element: (
+          <BuyerRoute>
+            <PurchaseCoin></PurchaseCoin>
+          </BuyerRoute>
+        ),
       },
       {
         path: "buyer/checkout",
-        element: <BuyerRoute><Checkout></Checkout></BuyerRoute>,
+        element: (
+          <BuyerRoute>
+            <Checkout></Checkout>
+          </BuyerRoute>
+        ),
       },
       {
         path: "buyer/payment-history",
-        element: <BuyerRoute><PaymentHistory></PaymentHistory></BuyerRoute>,
+        element: (
+          <BuyerRoute>
+            <PaymentHistory></PaymentHistory>
+          </BuyerRoute>
+        ),
       },
 
       // Worker
@@ -100,7 +120,9 @@ const router = createBrowserRouter([
         path: "worker/task-details/:id",
         element: <TaskDetails></TaskDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/task-details/${params.id}`),
+          fetch(
+            `https://micro-tasker-server.vercel.app/task-details/${params.id}`
+          ),
       },
       {
         path: "worker/my-submissions",

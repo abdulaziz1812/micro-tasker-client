@@ -15,14 +15,16 @@ const ManageTasks = () => {
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/tasks/available`).then((res) => {
-      const sortedTasks = [...res.data].sort(
-        (b, a) =>
-          new Date(b.completion_date).getTime() -
-          new Date(a.completion_date).getTime()
-      );
-      setTasks(sortedTasks);
-    });
+    axios
+      .get(`https://micro-tasker-server.vercel.app/tasks/available`)
+      .then((res) => {
+        const sortedTasks = [...res.data].sort(
+          (b, a) =>
+            new Date(b.completion_date).getTime() -
+            new Date(a.completion_date).getTime()
+        );
+        setTasks(sortedTasks);
+      });
   }, []);
 
   // console.log(tasks);

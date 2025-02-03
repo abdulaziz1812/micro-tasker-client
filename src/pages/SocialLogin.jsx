@@ -8,7 +8,7 @@ const SocialLogin = () => {
   const { googleLogin, setUser } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState({});
-  const [role, setRole] = useState(""); 
+  const [role, setRole] = useState("");
   const from = location.state?.pathname || "/";
 
   const handleGoogleLogin = () => {
@@ -25,16 +25,15 @@ const SocialLogin = () => {
         const user = result.user;
         setUser(user);
         axios
-          .get(`http://localhost:5000/user/${user.email}`)
+          .get(`https://micro-tasker-server.vercel.app/user/${user.email}`)
           .then((res) => {
             const existingUser = res.data;
 
             if (!existingUser) {
-              
               const coin = role === "Worker" ? 10 : 50;
 
               axios
-                .post("http://localhost:5000/user", {
+                .post("https://micro-tasker-server.vercel.app/user", {
                   name: user.displayName,
                   email: user.email,
                   photo: user.photoURL,
@@ -49,10 +48,11 @@ const SocialLogin = () => {
                   navigate(from);
                 })
                 .catch(() => {
-                  setError({ google: "Failed to save user data in the database." });
+                  setError({
+                    google: "Failed to save user data in the database.",
+                  });
                 });
             } else {
-             
               Swal.fire({
                 icon: "success",
                 title: "Login successful!",

@@ -17,16 +17,19 @@ const Register = () => {
   const axiosPublic = useAxiosPublic();
 
   const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-  
+
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
   const passwordValidation = (password) => {
     if (!/[A-Z]/.test(password)) {
-      return "Password must include an uppercase letter."};
+      return "Password must include an uppercase letter.";
+    }
     if (!/[a-z]/.test(password)) {
-      return "Password must include a lowercase letter."};
-    if (password.length < 6){ 
-      return "Password must be at least 6 characters long."};
+      return "Password must include a lowercase letter.";
+    }
+    if (password.length < 6) {
+      return "Password must be at least 6 characters long.";
+    }
     return null;
   };
 
@@ -48,7 +51,6 @@ const Register = () => {
     }
 
     try {
-      
       const imageData = new FormData();
       imageData.append("image", imageFile);
 
@@ -59,16 +61,19 @@ const Register = () => {
       const photo = res.data.data.display_url;
       const coin = role === "Worker" ? 10 : 50;
 
-      
       const userCredential = await createUser(email, password);
       const user = userCredential.user;
       setUser(user);
 
-      
       await updateUserProfile({ displayName: name, photoURL: photo });
 
-      
-      await axios.post("http://localhost:5000/user", { name, email, photo, role, coin });
+      await axios.post("https://micro-tasker-server.vercel.app/user", {
+        name,
+        email,
+        photo,
+        role,
+        coin,
+      });
 
       Swal.fire({
         title: "Registration successful!",
@@ -99,25 +104,46 @@ const Register = () => {
                   <label className="label">
                     <span className="label-text">Name</span>
                   </label>
-                  <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    className="input input-bordered"
+                    required
+                  />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
                   </label>
-                  <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className="input input-bordered"
+                    required
+                  />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Photo</span>
                   </label>
-                  <input type="file" name="photo" className="file-input" required />
+                  <input
+                    type="file"
+                    name="photo"
+                    className="file-input"
+                    required
+                  />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Select the role</span>
                   </label>
-                  <select name="role" className="select select-success" required>
+                  <select
+                    name="role"
+                    className="select select-success"
+                    required
+                  >
                     <option value="" disabled>
                       Select a Role
                     </option>
@@ -129,13 +155,29 @@ const Register = () => {
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input type="password" name="password" placeholder="Password" className="input input-bordered" required />
-                  {error.password && <label className="label text-xs text-red-500">{error.password}</label>}
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    className="input input-bordered"
+                    required
+                  />
+                  {error.password && (
+                    <label className="label text-xs text-red-500">
+                      {error.password}
+                    </label>
+                  )}
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-success w-full text-white">Register</button>
+                  <button className="btn btn-success w-full text-white">
+                    Register
+                  </button>
                 </div>
-                {error.reg && <label className="label text-sm text-red-500">{error.reg}</label>}
+                {error.reg && (
+                  <label className="label text-sm text-red-500">
+                    {error.reg}
+                  </label>
+                )}
               </form>
               <div className="px-8 pb-8">
                 <div className="divider">OR</div>
@@ -149,7 +191,6 @@ const Register = () => {
               </p>
             </div>
 
-            
             <div>
               <Lottie animationData={regLottieData} />
             </div>

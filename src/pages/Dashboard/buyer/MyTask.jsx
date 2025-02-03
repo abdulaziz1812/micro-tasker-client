@@ -17,14 +17,16 @@ const MyTask = () => {
   const coin = user?.coin;
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/tasks/${email}`).then((res) => {
-      const sortedTasks = [...res.data].sort(
-        (b, a) =>
-          new Date(b.completion_date).getTime() -
-          new Date(a.completion_date).getTime()
-      );
-      setTasks(sortedTasks);
-    });
+    axios
+      .get(`https://micro-tasker-server.vercel.app/tasks/${email}`)
+      .then((res) => {
+        const sortedTasks = [...res.data].sort(
+          (b, a) =>
+            new Date(b.completion_date).getTime() -
+            new Date(a.completion_date).getTime()
+        );
+        setTasks(sortedTasks);
+      });
   }, [email]);
 
   const date = (completion_date) => {
