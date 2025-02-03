@@ -7,7 +7,7 @@
 - **Password**: 123456Az
 
 ## Live Site URL
-- [Micro Tasker Live Site]([https://microtasker.com](https://micro-tasker-cc8a1.web.app))
+- [Micro Tasker Live Site](https://microtasker.com)
 
 ## Features
 1. **Role-based access**: Different functionalities for Buyers, Workers, and Admins.
