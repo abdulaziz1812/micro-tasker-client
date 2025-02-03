@@ -21,6 +21,8 @@ import ManageUsers from "../pages/Dashboard/admin/ManageUsers";
 import ManageTasks from "../pages/Dashboard/admin/ManageTasks";
 import BuyerHome from "../pages/Dashboard/buyer/BuyerHome";
 import WorkerHome from "../pages/Dashboard/worker/WorkerHome";
+import AdminRoute from "./AdminRoute";
+import BuyerRoute from "./BuyerRoute";
 
 const router = createBrowserRouter([
   {
@@ -50,72 +52,88 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-      // Buyer 
       {
         path: "/dashboard",
         element: <DashboardHome></DashboardHome>,
       },
+      // Buyer
       {
         path: "buyer/buyer-home",
-        element:<BuyerHome></BuyerHome>
+        element: (
+          <BuyerRoute>
+            <BuyerHome></BuyerHome>
+          </BuyerRoute>
+        ),
       },
-
+      
       {
         path: "buyer/add-task",
-        element: <AddTask></AddTask>
+        element: <BuyerRoute><AddTask></AddTask></BuyerRoute>,
       },
       {
         path: "buyer/my-tasks",
-        element:<MyTask></MyTask>
+        element: <BuyerRoute><MyTask></MyTask></BuyerRoute>,
       },
       {
         path: "buyer/purchase-coin",
-        element: <PurchaseCoin></PurchaseCoin>
-      }, 
+        element: <BuyerRoute><PurchaseCoin></PurchaseCoin></BuyerRoute>,
+      },
       {
         path: "buyer/checkout",
-        element: <Checkout></Checkout>
+        element: <BuyerRoute><Checkout></Checkout></BuyerRoute>,
       },
       {
         path: "buyer/payment-history",
-        element:<PaymentHistory></PaymentHistory>
+        element: <BuyerRoute><PaymentHistory></PaymentHistory></BuyerRoute>,
       },
-     
-      // Worker 
+
+      // Worker
       {
         path: "worker/worker-home",
-        element: <WorkerHome></WorkerHome>
+        element: <WorkerHome></WorkerHome>,
       },
       {
         path: "worker/task-list",
-        element: <TaskList></TaskList>
+        element: <TaskList></TaskList>,
       },
       {
         path: "worker/task-details/:id",
-        element:<TaskDetails></TaskDetails>,
-        loader: ({ params }) => fetch( `http://localhost:5000/task-details/${params.id}`),
+        element: <TaskDetails></TaskDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/task-details/${params.id}`),
       },
       {
         path: "worker/my-submissions",
-        element: <MySubmissions></MySubmissions>
+        element: <MySubmissions></MySubmissions>,
       },
       {
         path: "worker/withdrawals",
-        element:<Withdraw></Withdraw>
+        element: <Withdraw></Withdraw>,
       },
-      // Admin 
+      // Admin
       {
         path: "admin/admin-home",
-        element: <AdminHome></AdminHome>
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
         path: "admin/manage-users",
-        element:<ManageUsers></ManageUsers>
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
       {
         path: "admin/manage-tasks",
-        element:<ManageTasks></ManageTasks>
-       
+        element: (
+          <AdminRoute>
+            <ManageTasks></ManageTasks>
+          </AdminRoute>
+        ),
       },
     ],
   },
@@ -127,4 +145,3 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
-

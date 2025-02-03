@@ -6,10 +6,12 @@ import coin from "../assets/coin.gif";
 import notification from "../assets/notfication.gif";
 import { Helmet } from "react-helmet-async";
 
+
 const Dashboard = () => {
   const { user: currentUser } = useAuth();
   const email = currentUser?.email;
   const { user, isLoading, error } = useCoin(email);
+  
 
   const links = {
     Buyer: [

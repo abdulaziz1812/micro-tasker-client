@@ -16,6 +16,7 @@ const AddTask = () => {
   const name= currentUser?.displayName
   const { user, isLoading, error, refetch } = useCoin(email);
   const coin = user?.coin;
+  
  
   console.log(currentUser);
   const { register, handleSubmit,reset } = useForm();
@@ -88,6 +89,7 @@ const AddTask = () => {
         });
         refetch();
         reset()
+        navigate('/dashboard/buyer/my-tasks')
       }
     }
   };

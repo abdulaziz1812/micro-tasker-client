@@ -6,11 +6,13 @@ import { ImCoinDollar } from "react-icons/im";
 import { FaCashRegister } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import useAdmin from "../../../hook/useAdmin";
 
 
 const AdminHome = () => {
   const axiosSecure = useAxiosSecure();
   
+
   const { data: stats } = useQuery({
     queryKey: ["admin-stats"],
     queryFn: async () => {
