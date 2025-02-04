@@ -11,7 +11,7 @@ const JoinSection = () => {
       className="container mx-auto px-6 text-center">
         <div className="flex flex-col md:flex-row justify-center gap-8 ">
           {/* Worker Card */}
-          <div className="card w-96 bg-teal-100 shadow-xl p-8 rounded-lg">
+          <div className="card md:w-96 bg-teal-100 shadow-xl p-8 rounded-lg">
             <h3 className="text-2xl font-semibold text-gray-800">Join as a Worker</h3>
             <p className="text-lg text-gray-600 mt-4">Start earning by completing microtasks for buyers!</p>
             <ul className="text-left mt-6 text-gray-600">
@@ -23,7 +23,7 @@ const JoinSection = () => {
           </div>
 
           {/* Buyer Card */}
-          <div className="card w-96 bg-yellow-100 shadow-xl p-8 rounded-lg">
+          <div className="card md:w-96 bg-yellow-100 shadow-xl p-8 rounded-lg">
             <h3 className="text-2xl font-semibold text-gray-800">Join as a Buyer</h3>
             <p className="text-lg text-gray-600 mt-4">Post tasks and find skilled workers to complete them!</p>
             <ul className="text-left mt-6 text-gray-600">
