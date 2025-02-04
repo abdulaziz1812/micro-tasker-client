@@ -14,7 +14,7 @@ const BestWorkers = () => {
   return (
     <div className="w-10/12 mx-auto p-6">
       <h2 className="font-bold text-center text-4xl py-6">Best Workers</h2>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {workers.map((worker, index) => (
           <motion.div
             initial={{ opacity: 0 }}
@@ -24,7 +24,7 @@ const BestWorkers = () => {
               delay: index * 0.4,
             }}
             key={index}
-            className="p-4 mx-auto shadow-2xl rounded-2xl border border-gray-200 w-xs text-center"
+            className="p-4 mx-auto shadow-2xl rounded-2xl border border-gray-200  w-full md:w-xs text-center"
           >
             <img
               src={worker.photo}
