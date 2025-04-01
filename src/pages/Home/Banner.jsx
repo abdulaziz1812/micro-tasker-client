@@ -34,19 +34,15 @@ const Banner = () => {
       >
         {/* Slide 1 */}
         <SwiperSlide>
-          <div className="relative h-[500px] md:h-[600px]">
-            <img
-              src={banner01}
-              className="object-cover w-full h-full brightness-75" 
-              alt="Empower Your Future"
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-gray-900 via-transparent to-gray-900">
-              <div className="text-center px-4 z-10">
+          <div className="flex flex-col gap-2 lg:flex-row h-[500px] md:h-[600px]">
+            {/* Text */}
+            <div className="w-full lg:w-1/3 flex items-center justify-start">
+              <div className="text-left p-6 lg:px-16">
                 <motion.h1
                   variants={textAnimation}
                   initial="hidden"
                   whileInView="visible"
-                  className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg"
+                  className="text-4xl lg:text-6xl font-extrabold text-black drop-shadow-lg"
                 >
                   Empower Your Future
                 </motion.h1>
@@ -55,7 +51,7 @@ const Banner = () => {
                   initial="hidden"
                   whileInView="visible"
                   transition={{ delay: 0.6 }}
-                  className="text-lg md:text-2xl text-gray-200 mt-4 max-w-2xl mx-auto"
+                  className="text-lg md:text-2xl text-black mt-4 max-w-2xl"
                 >
                   Join Micro Tasker to earn by completing simple tasks anytime, anywhere.
                 </motion.p>
@@ -68,31 +64,36 @@ const Banner = () => {
                 >
                   <Link
                     to="/register"
-                    className="btn btn-success btn-lg rounded-full font-semibold  shadow-lg transition-all"
+                    className="btn btn-success btn-lg rounded-full font-semibold shadow-lg transition-all"
                   >
                     Get Started
                   </Link>
                 </motion.div>
               </div>
             </div>
+            {/* Image */}
+            <div className="w-full lg:w-2/3 lg:h-full md:h-[350px] relative px-6 md:px-8 lg:p-12">
+              <img
+                src={banner01}
+                className="object-cover rounded-2xl w-full h-full brightness-75"
+                alt="Empower Your Future"
+              />
+              <div className="absolute inset-x-6 md:inset-x-8 lg:inset-12 inset-y-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900 rounded-2xl"></div>
+            </div>
           </div>
         </SwiperSlide>
 
         {/* Slide 2 */}
         <SwiperSlide>
-          <div className="relative h-[500px] md:h-[600px]">
-            <img
-              src={banner02}
-              className="object-cover w-full h-full brightness-75"
-              alt="Your Tasks, Your Earnings"
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-blue-900/70 via-transparent to-blue-900/50">
-              <div className="text-center px-4 z-10">
+          <div className="flex flex-col gap-2 lg:flex-row h-[500px] md:h-[600px]">
+            {/* Text */}
+            <div className="w-full lg:w-1/3 flex items-center justify-start">
+              <div className="text-left p-6 lg:px-16">
                 <motion.h1
                   variants={textAnimation}
                   initial="hidden"
                   whileInView="visible"
-                  className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg"
+                  className="text-4xl lg:text-6xl font-extrabold text-black drop-shadow-lg"
                 >
                   Your Tasks, Your Earnings
                 </motion.h1>
@@ -100,8 +101,8 @@ const Banner = () => {
                   variants={textAnimation}
                   initial="hidden"
                   whileInView="visible"
-                  transition={{ delay: 0.3 }}
-                  className="text-lg md:text-2xl text-gray-200 mt-4 max-w-2xl mx-auto"
+                  transition={{ delay: 0.6 }}
+                  className="text-lg md:text-2xl text-black mt-4 max-w-2xl"
                 >
                   Post tasks as a buyer or earn rewards as a worker—flexibility at its best.
                 </motion.p>
@@ -114,31 +115,36 @@ const Banner = () => {
                 >
                   <Link
                     to="/dashboard"
-                    className="btn btn-success btn-lg rounded-full font-semibold  shadow-lg transition-all"
+                    className="btn btn-success btn-lg rounded-full font-semibold shadow-lg transition-all"
                   >
                     Explore Now
                   </Link>
                 </motion.div>
               </div>
             </div>
+            {/* Image */}
+            <div className="w-full lg:w-2/3 h-full relative px-6 md:px-8 lg:p-12">
+              <img
+                src={banner02}
+                className="object-cover rounded-2xl w-full h-full brightness-75"
+                alt="Your Tasks, Your Earnings"
+              />
+              <div className="absolute inset-x-6 md:inset-x-8 lg:inset-12 inset-y-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900 rounded-2xl"></div>
+            </div>
           </div>
         </SwiperSlide>
 
         {/* Slide 3 */}
         <SwiperSlide>
-          <div className="relative h-[500px] md:h-[600px]">
-            <img
-              src={banner03}
-              className="object-cover w-full h-full brightness-75"
-              alt="Join the Best Workers"
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-purple-900/70 via-transparent to-purple-900/30">
-              <div className="text-center px-4 z-10">
+          <div className="flex flex-col gap-2 lg:flex-row h-[500px] md:h-[600px]">
+            {/* Text */}
+            <div className="w-full lg:w-1/3 flex items-center justify-start">
+              <div className="text-left p-6 lg:px-16">
                 <motion.h1
                   variants={textAnimation}
                   initial="hidden"
                   whileInView="visible"
-                  className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg"
+                  className="text-4xl lg:text-6xl font-extrabold text-black drop-shadow-lg"
                 >
                   Join the Best Workers
                 </motion.h1>
@@ -146,8 +152,8 @@ const Banner = () => {
                   variants={textAnimation}
                   initial="hidden"
                   whileInView="visible"
-                  transition={{ delay: 0.3 }}
-                  className="text-lg md:text-2xl text-gray-200 mt-4 max-w-2xl mx-auto"
+                  transition={{ delay: 0.6 }}
+                  className="text-lg md:text-2xl text-black mt-4 max-w-2xl"
                 >
                   Collaborate with top talent or become a skilled worker today.
                 </motion.p>
@@ -160,12 +166,21 @@ const Banner = () => {
                 >
                   <Link
                     to="/register"
-                    className="btn btn-success btn-lg rounded-full font-semibold  shadow-lg transition-all"
+                    className="btn btn-success btn-lg rounded-full font-semibold shadow-lg transition-all"
                   >
                     Sign Up
                   </Link>
                 </motion.div>
               </div>
+            </div>
+            {/* Image */}
+            <div className="w-full lg:w-2/3 h-full relative px-6 md:px-8 lg:p-12">
+              <img
+                src={banner03}
+                className="object-cover rounded-2xl w-full h-full brightness-75"
+                alt="Join the Best Workers"
+              />
+              <div className="absolute inset-x-6 md:inset-x-8 lg:inset-12 inset-y-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900 rounded-2xl"></div>
             </div>
           </div>
         </SwiperSlide>
