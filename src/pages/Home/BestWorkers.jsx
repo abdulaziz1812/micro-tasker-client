@@ -12,9 +12,9 @@ const BestWorkers = () => {
   }, []);
 
   return (
-    <div className="w-10/12 mx-auto p-6">
+    <div className="w-11/12 mx-auto max-w-5xl p-6">
       <h2 className="font-bold text-center text-4xl py-6">Best Workers</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {workers.map((worker, index) => (
           <motion.div
             initial={{ opacity: 0 }}
@@ -24,14 +24,14 @@ const BestWorkers = () => {
               delay: index * 0.4,
             }}
             key={index}
-            className="p-4 mx-auto shadow-2xl rounded-2xl border border-gray-200  w-full md:w-xs text-center"
+            className=" p-4 mx-auto shadow-2xl rounded-2xl border border-gray-200  md:w-xs text-center w-full"
           >
             <img
               src={worker.photo}
               alt={worker.name}
               className="w-24 h-24 rounded-full mx-auto"
             />
-            <h3 className="mt-2 text-lg font-semibold">{worker.name}</h3>
+            <h3 className="mt-2 font-semibold">{worker.name}</h3>
             <p className="text-gray-600">Coins: {worker.coin}</p>
           </motion.div>
         ))}

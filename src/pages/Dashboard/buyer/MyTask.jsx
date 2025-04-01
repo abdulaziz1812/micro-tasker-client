@@ -108,7 +108,7 @@ const MyTask = () => {
   };
 
   return (
-    <div className="p-6 m-8 rounded-2xl shadow-2xl border lg:w-9/12  border-gray-200">
+    <div className="p-6 m-8 rounded-2xl shadow-2xl border lg:w-9/12 xl:w-10/12  border-gray-200">
       <Helmet>
         <title>My Task | Micro Tasker</title>
       </Helmet>

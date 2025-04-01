@@ -8,7 +8,7 @@ const JoinSection = () => {
       initial={{ opacity: 0, scale: 0.5 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="container mx-auto px-6 text-center">
+      className="container mx-auto max-w-5xl px-6 text-center">
         <div className="flex flex-col md:flex-row justify-center gap-8 ">
           {/* Worker Card */}
           <div className="card md:w-96 bg-teal-100 shadow-xl p-8 rounded-lg">

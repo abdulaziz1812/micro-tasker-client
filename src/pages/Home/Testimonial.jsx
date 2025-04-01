@@ -46,7 +46,7 @@ const Testimonial = () => {
       initial={{ opacity: 0, scale: 0.5 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="bg-gray-50 py-12"
+      className="py-12"
     >
       <h2 className="text-4xl font-bold text-center mb-8">What People Say</h2>
       <Swiper
@@ -55,11 +55,11 @@ const Testimonial = () => {
         loop
         spaceBetween={30}
         slidesPerView={1}
-        className="w-10/12 mx-auto shadow-2xl rounded-2xl"
+        className="w-10/12 mx-auto shadow-2xl max-w-5xl rounded-2xl"
       >
         {testimonials.map((testimonial) => (
           <SwiperSlide key={testimonial.id}>
-            <div className="flex flex-col items-center bg-gray-100 p-6 rounded-2xl ">
+            <div className="flex flex-col items-center  p-6 rounded-2xl ">
               <img
                 src={testimonial.photo}
                 alt={testimonial.name}

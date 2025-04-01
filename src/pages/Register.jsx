@@ -169,7 +169,7 @@ const Register = () => {
                   )}
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-success w-full text-white">
+                  <button className="btn btn-success w-full ">
                     Register
                   </button>
                 </div>

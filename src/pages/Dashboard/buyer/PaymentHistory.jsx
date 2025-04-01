@@ -1,4 +1,4 @@
-import React from "react";
+
 import useAuth from "../../../hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
@@ -33,7 +33,7 @@ const PaymentHistory = () => {
         <title>Payment-History | Micro Tasker</title>
       </Helmet>
       <h2 className="text-2xl font-bold mb-4">Payment History</h2>
-      <div className="overflow-x-auto p-6 rounded shadow-2xl border border-gray-200">
+      <div className="overflow-x-auto p-6  shadow-2xl border rounded-2xl border-gray-200">
         <table className="table table-zebra ">
           {/* head */}
           <thead>

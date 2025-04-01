@@ -8,7 +8,7 @@ import NotFound from "../pages/NotFound";
 import AddTask from "../pages/Dashboard/buyer/AddTask";
 import MainLayout from "../Layouts/MainLayout";
 import MyTask from "../pages/Dashboard/buyer/MyTask";
-import DashboardHome from "../pages/Dashboard/buyer/DashboardHome";
+
 import PurchaseCoin from "../pages/Dashboard/buyer/PurchaseCoin";
 import Checkout from "../pages/Dashboard/buyer/Checkout";
 import PaymentHistory from "../pages/Dashboard/buyer/PaymentHistory";
@@ -23,6 +23,9 @@ import BuyerHome from "../pages/Dashboard/buyer/BuyerHome";
 import WorkerHome from "../pages/Dashboard/worker/WorkerHome";
 import AdminRoute from "./AdminRoute";
 import BuyerRoute from "./BuyerRoute";
+import Profile from "../pages/Dashboard/sharded/Profile";
+import DashboardHome from "../pages/Dashboard/sharded/DashboardHome";
+import UpdateProfile from "../pages/Dashboard/sharded/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +59,19 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <DashboardHome></DashboardHome>,
       },
+      {
+        path: "update-profile",
+        element: <UpdateProfile></UpdateProfile>,
+      },
       // Buyer
+      {
+        path: "buyer/my-profile",
+        element: (
+          <BuyerRoute>
+            <Profile></Profile>
+          </BuyerRoute>
+        ),
+      },
       {
         path: "buyer/buyer-home",
         element: (
@@ -109,6 +124,12 @@ const router = createBrowserRouter([
 
       // Worker
       {
+        path: "worker/my-profile",
+        element: (
+          <Profile></Profile>
+        ),
+      },
+      {
         path: "worker/worker-home",
         element: <WorkerHome></WorkerHome>,
       },
@@ -133,6 +154,14 @@ const router = createBrowserRouter([
         element: <Withdraw></Withdraw>,
       },
       // Admin
+      {
+        path: "admin/my-profile",
+        element: (
+          <AdminRoute>
+            <Profile></Profile>
+          </AdminRoute>
+        ),
+      },
       {
         path: "admin/admin-home",
         element: (

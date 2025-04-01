@@ -27,7 +27,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray-200 ">
       <div className="w-11/12 mx-auto ">
         <div className="navbar  text-black">
           <div className="navbar-start">
@@ -109,7 +109,7 @@ const Navbar = () => {
                 </>
               )}
               <a
-                href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-abdulaziz1812"
+                href="https://github.com/abdulaziz1812/micro-tasker-client"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-link text-xs text-gray-700"

@@ -12,9 +12,9 @@ const HowItWorks = () => {
     ];
   
     return (
-      <div className="bg-gray-100 py-12">
+      <div className="-100 py-12">
         <h2 className="text-4xl font-bold text-center mb-8">How It Works</h2>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+        <div className="flex flex-col md:flex-row justify-center items-center max-w-5xl mx-auto gap-8">
           {steps.map((step) => (
         
             <motion.div 

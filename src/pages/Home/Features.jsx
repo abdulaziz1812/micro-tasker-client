@@ -24,10 +24,10 @@ const Features = () => {
   ];
 
   return (
-    <div className="bg-gray-50 py-12 ">
-      <div className="w-10/12 mx-auto">
+    <div className="py-12 ">
+      <div className="w-10/12 mx-auto max-w-5xl">
         <h2 className="text-4xl font-bold text-center mb-8">Why Choose Us</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-11/12 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {features.map((feature) => (
             <motion.div
               initial={{ opacity: 0 }}
