@@ -8,8 +8,16 @@ import JoinSection from './JoinSection';
 import TaskCategories from './TaskCategories';
 import Community from './Community';
 import FAQ from './FAQ';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Home = () => {
+
+    AOS.init({
+        duration: 2000,
+        
+        easing: "ease-in-out",
+      }); 
     return (
         <div>
             <Helmet>
@@ -17,10 +25,11 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <BestWorkers></BestWorkers>
-            <Testimonial></Testimonial>
+            
             <HowItWorks></HowItWorks>
             <Features></Features>
             <TaskCategories></TaskCategories>
+            <Testimonial></Testimonial>
             <Community></Community>
             <JoinSection></JoinSection>
             <FAQ></FAQ>

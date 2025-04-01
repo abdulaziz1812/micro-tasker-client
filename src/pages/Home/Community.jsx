@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Community = () => {
   return (
-    <div className="bg-gradient-to-r from-teal-600 to-blue-600 py-12 text-white">
+    <div className=" py-12 ">
       <div className="w-10/12 mx-auto max-w-5xl text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -28,7 +28,7 @@ const Community = () => {
         >
           <Link
             to="/register"
-            className="btn btn-lg rounded-full "
+            className="btn btn-lg btn-success rounded-full "
           >
             Join the Community
           </Link>

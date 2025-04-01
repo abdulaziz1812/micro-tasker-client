@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+
 const BestWorkers = () => {
   const [workers, setWorkers] = useState([]);
 
   useEffect(() => {
+       
+    
     fetch("https://micro-tasker-server.vercel.app/best-workers")
       .then((res) => res.json())
       .then((data) => setWorkers(data));
@@ -12,8 +15,16 @@ const BestWorkers = () => {
   }, []);
 
   return (
-    <div className="w-11/12 mx-auto max-w-5xl p-6">
-      <h2 className="font-bold text-center text-4xl py-6">Best Workers</h2>
+    <div className="w-11/12 mx-auto max-w-5xl p-6 min-h-20">
+      
+      <div className="mb-12 text-center " data-aos="fade-right">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-2 text-center ">
+          Our Best Workers
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 font-medium">
+          Exceptional Contributors Making a Difference
+          </p>
+        </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {workers.map((worker, index) => (
           <motion.div

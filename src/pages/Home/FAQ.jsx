@@ -24,7 +24,7 @@ const FAQ = () => {
 
 
   return (
-    <div className="bg-gray-50 py-12">
+    <div className=" py-12">
       <div className="w-10/12 mx-auto max-w-5xl">
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
           Frequently Asked Questions

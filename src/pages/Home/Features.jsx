@@ -26,8 +26,16 @@ const Features = () => {
   return (
     <div className="py-12 ">
       <div className="w-10/12 mx-auto max-w-5xl">
-        <h2 className="text-4xl font-bold text-center mb-8">Why Choose Us</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+        
+        <div className="mb-12 text-center " data-aos="fade-right">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-2 text-center ">
+          Why Choose Us
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 font-medium">
+          The Benefits of Tasking with Us
+          </p>
+        </div>
+        <div className="flex flex-col md:flex-row justify-center items-center max-w-5xl mx-auto gap-8 ">
           {features.map((feature) => (
             <motion.div
               initial={{ opacity: 0 }}
@@ -37,7 +45,7 @@ const Features = () => {
                 delay: feature.id * 0.4,
               }}
               key={feature.id}
-              className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center"
+              className="bg-white shadow-2xl rounded-lg p-6 flex flex-col items-center justify-center border w-72 md:h-65 border-gray-200 text-center"
             >
               <div className="text-5xl mb-4">{feature.icon}</div>
               <h3 className="text-2xl font-bold mb-2">{feature.title}</h3>
