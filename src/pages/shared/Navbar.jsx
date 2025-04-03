@@ -10,22 +10,55 @@ const Navbar = () => {
   // console.log(email);
   const { user, isLoading, error } = useCoin(email);
   // console.log(user);
-  const link = (
+  const authLink = (
     <>
       <li>
-        <NavLink to="/dashboard" className="">
+        <NavLink to="/dashboard" className="btn btn-success btn-sm">
           Dashboard
         </NavLink>
       </li>
-      <li>
-        <div>
+      
+        <div className="flex justify-center items-center gap-2 px-2">
           Available coin:{" "}
           {isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}
           <img src={coin} alt="" className="w-5 rounded-full" />
         </div>
-      </li>
+      
     </>
   );
+
+  const links =(
+    <>
+    <li>
+        <NavLink to="/" className={({ isActive }) =>
+            `btn btn-sm btn-success ${isActive ? "font-extrabold" : ""}`
+          }>
+          Home
+        </NavLink>
+      </li>
+    <li>
+        <NavLink to="/about-us" className={({ isActive }) =>
+            `btn btn-sm btn-success ${isActive ? "font-extrabold" : ""}`
+          }>
+          About Us
+        </NavLink>
+      </li>
+    <li>
+        <NavLink to="/contact-us" className={({ isActive }) =>
+            `btn btn-sm btn-success ${isActive ? "font-extrabold" : ""}`
+          }>
+          Contact Us
+        </NavLink>
+      </li>
+    <li>
+        <NavLink to="/categories" className={({ isActive }) =>
+            `btn btn-sm btn-success ${isActive ? "font-extrabold" : ""}`
+          }>
+          Categories
+        </NavLink>
+      </li>
+    </>
+  )
   return (
     <div className="bg-gray-200 ">
       <div className="w-11/12 mx-auto ">
@@ -54,18 +87,21 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-y-2"
               >
-                {currentUser && currentUser.email ? link : ""}
+                {links}
+                {currentUser && currentUser.email ? authLink : ""}
               </ul>
             </div>
             <Link to="/">
               <img className="w-16 lg:w-24" src={logo} alt="" />
+              
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
-              {currentUser && currentUser.email ? link : ""}
+            <ul className="menu menu-horizontal  space-x-2">
+              {links}
+              {currentUser && currentUser.email ? authLink : ""}
             </ul>
           </div>
           <div className="navbar-end ">
@@ -90,19 +126,19 @@ const Navbar = () => {
                   </div>
                   <button
                     onClick={logout}
-                    className="btn btn-xs md:btn  btn-success"
+                    className="btn btn-xs md:btn-sm  btn-success"
                   >
                     Logout
                   </button>
                 </>
               ) : (
                 <>
-                  <Link to="/login" className="btn btn-success btn-xs md:btn">
+                  <Link to="/login" className="btn btn-success btn-xs md:btn-sm">
                     Login
                   </Link>
                   <Link
                     to="/register"
-                    className="btn btn-success btn-xs md:btn"
+                    className="btn btn-success btn-xs md:btn-sm"
                   >
                     Register
                   </Link>

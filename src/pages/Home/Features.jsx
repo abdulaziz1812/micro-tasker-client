@@ -45,9 +45,9 @@ const Features = () => {
                 delay: feature.id * 0.4,
               }}
               key={feature.id}
-              className="bg-white shadow-2xl rounded-lg p-6 flex flex-col items-center justify-center border w-72 md:h-65 border-gray-200 text-center"
+              className="bg-white shadow-2xl rounded-lg p-6 flex flex-col items-center justify-center border w-72 md:h-65 border-gray-200 text-center hover:shadow-success/50 group"
             >
-              <div className="text-5xl mb-4">{feature.icon}</div>
+              <div className="text-5xl mb-4 group-hover:scale-110 ">{feature.icon}</div>
               <h3 className="text-2xl font-bold mb-2">{feature.title}</h3>
               <p className="text-gray-600 text-center">{feature.description}</p>
             </motion.div>

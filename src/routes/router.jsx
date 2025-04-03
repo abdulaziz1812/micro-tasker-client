@@ -26,6 +26,9 @@ import BuyerRoute from "./BuyerRoute";
 import Profile from "../pages/Dashboard/sharded/Profile";
 import DashboardHome from "../pages/Dashboard/sharded/DashboardHome";
 import UpdateProfile from "../pages/Dashboard/sharded/UpdateProfile";
+import AboutUs from "../pages/AboutUs/AboutUs";
+import ContactUs from "../pages/ContactUs/ContactUs";
+import Categories from "../pages/Categories/Categories";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,18 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs></ContactUs>,
+      },
+      {
+        path: "/categories",
+        element: <Categories></Categories>,
       },
     ],
   },

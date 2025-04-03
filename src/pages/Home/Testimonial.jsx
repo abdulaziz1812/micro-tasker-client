@@ -50,7 +50,9 @@ const Testimonial = () => {
     >
       <div className="max-w-5xl w-10/12 mx-auto px-4 md:flex gap-2 justify-center items-center">
        
-        <div className="mb-12 text-center md:text-left">
+        <div 
+        data-aos="fade-right"
+        className="mb-12 text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4 ">
           Echoes from Our Community
           </h2>
@@ -67,7 +69,8 @@ const Testimonial = () => {
           spaceBetween={30}
           slidesPerView={1}
           autoplay={{ delay: 8000, disableOnInteraction: false }}
-          className="w-full max-w-3xl mx-auto shadow-2xl rounded-2xl border border-gray-200 bg-white"
+          className="w-full max-w-3xl mx-auto shadow-2xl rounded-2xl border border-gray-200 bg-white hover:shadow-success/50 group"
+          data-aos="fade-left"
         >
           {testimonials.map((testimonial) => (
             <SwiperSlide key={testimonial.id}>
@@ -78,7 +81,7 @@ const Testimonial = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   src={testimonial.photo}
                   alt={testimonial.name}
-                  className="w-24 h-24 md:w-28 md:h-28 rounded-full mb-6 border-4 border-green-100 object-cover"
+                  className="w-24 h-24 md:w-28 md:h-28 rounded-full mb-6 border-4 border-green-100 object-cover group-hover:scale-110 "
                 />
                 <h3 className="text-2xl font-semibold text-gray-800 mb-3">
                   {testimonial.name}

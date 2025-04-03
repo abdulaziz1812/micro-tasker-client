@@ -16,17 +16,31 @@ const Footer = () => {
             </p>
           </aside>
           <nav>
-            <h6 className="footer-title">Social</h6>
+            <h6 className="footer-title font-bold">Quick Links</h6>
+            <div className="grid grid-flow-row gap-4">
+              <NavLink to="/about-us">
+                About Us
+              </NavLink>
+              <NavLink to="/contact-us">
+                Contact Us
+              </NavLink>
+              <NavLink to="/categories">
+                Categories
+              </NavLink>
+              
+              
+            </div>
+          </nav>
+          <nav>
+            <h6 className="footer-title font-bold">Social</h6>
             <div className="grid grid-flow-col gap-4">
               <NavLink to="https://github.com/abdulaziz1812/">
                 <FaGithub className="text-3xl" />
               </NavLink>
-              <NavLink to="https://www.linkedin.com/in/abdul-aziz-abdul-mannan/">
+              <NavLink to="https://www.linkedin.com/in/abdul-aziz-abdul-mannan1/">
                 <FaLinkedin className="text-3xl" />
               </NavLink>
-              <NavLink to="https://www.facebook.com/shadow.soul2011/">
-                <FaFacebook className="text-3xl" />
-              </NavLink>
+              
             </div>
           </nav>
         </footer>

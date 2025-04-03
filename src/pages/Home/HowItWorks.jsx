@@ -34,8 +34,8 @@ const HowItWorks = () => {
             transition={{
                 duration:.5 ,delay: step.id * .4 
             }} 
-            key={step.id} className="bg-white shadow-2xl rounded-lg p-6 text-center w-72  md:h-80 lg:h-95 border border-gray-200">
-                <Lottie animationData={step.lottie}></Lottie>
+            key={step.id} className="bg-white shadow-2xl rounded-lg p-6 text-center w-72  md:h-80 lg:h-95 border border-gray-200 group hover:shadow-success/50">
+                <Lottie animationData={step.lottie} className=" group-hover:scale-110"></Lottie>
               <h3 className="text-2xl font-bold mb-2">{step.title}</h3>
               <p className="text-gray-600">{step.description}</p>
             </motion.div>

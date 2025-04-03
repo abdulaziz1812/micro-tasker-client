@@ -15,7 +15,7 @@ const BestWorkers = () => {
   }, []);
 
   return (
-    <div className="w-11/12 mx-auto max-w-5xl p-6 min-h-20">
+    <div className="w-11/12 mx-auto max-w-5xl p-6 min-h-60">
       
       <div className="mb-12 text-center " data-aos="fade-right">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-2 text-center ">
@@ -35,12 +35,12 @@ const BestWorkers = () => {
               delay: index * 0.4,
             }}
             key={index}
-            className=" p-4 mx-auto shadow-2xl rounded-2xl border border-gray-200  md:w-xs text-center w-full"
+            className=" p-4 mx-auto shadow-2xl rounded-lg border border-gray-200  md:w-xs text-center w-full hover:shadow-success/50 group"
           >
             <img
               src={worker.photo}
               alt={worker.name}
-              className="w-24 h-24 rounded-full mx-auto"
+              className="w-24 h-24 rounded-full mx-auto group-hover:scale-110"
             />
             <h3 className="mt-2 font-semibold">{worker.name}</h3>
             <p className="text-gray-600">Coins: {worker.coin}</p>

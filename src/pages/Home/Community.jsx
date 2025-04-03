@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 
 const Community = () => {
   return (
-    <div className=" py-12 ">
+    <div 
+    data-aos="fade-right"
+    className=" py-12 ">
       <div className="w-10/12 mx-auto max-w-5xl text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
