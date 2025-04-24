@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -70,7 +69,7 @@ const ManageUsers = () => {
   if (error) return <p>Error loading users.</p>;
 
   return (
-    <div className="p-6 xl:m-6 rounded-2xl shadow-2xl border border-gray-200 lg:w-fit">
+    <div className="p-6  rounded-2xl shadow-2xl border border-gray-200 ">
       <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
       <div className="overflow-x-auto">
         <table className="table  ">

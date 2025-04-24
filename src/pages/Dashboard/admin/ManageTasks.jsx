@@ -76,7 +76,7 @@ const ManageTasks = () => {
   };
 
   return (
-    <div className="p-4 xl:m-8 rounded-2xl shadow-2xl border border-gray-200 lg:w-10/12 ">
+    <div className="p-4 rounded-2xl shadow-2xl border border-gray-200 ">
       <h2 className="text-2xl font-bold mb-4">Manage Tasks</h2>
 
       <div className="overflow-x-auto">

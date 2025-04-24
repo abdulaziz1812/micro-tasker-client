@@ -63,7 +63,7 @@ const AboutUs = () => {
           <div className="stats shadow stats-vertical md:stats-horizontal">
             <div className="stat">
               <div className="stat-value text-success">1K+</div>
-              <div className="stat-title">Active Users</div>
+              <div className="stat-title">Users</div>
             </div>
             <div className="stat">
               <div className="stat-value text-success">5K+</div>

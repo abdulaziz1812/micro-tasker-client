@@ -1,6 +1,6 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/Logo.png";
-import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (

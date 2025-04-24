@@ -62,7 +62,7 @@ const AdminHome = () => {
   };
 
   return (
-    <div className="flex flex-col  w-full ">
+    <div className="flex flex-col w-full ">
       <Helmet>
         <title>Admin Home | Micro Tasker</title>
       </Helmet>

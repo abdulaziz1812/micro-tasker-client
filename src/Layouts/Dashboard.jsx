@@ -60,11 +60,11 @@ const Dashboard = () => {
   const navigationLinks = links[user?.role] || links.Default;
 
   return (
-    <div className="mx-auto w-11/12">
+    <div className="">
       <Helmet>
         <title>Dashboard | Micro Tasker</title>
       </Helmet>
-      <div className="flex   justify-between items-center md:p-4  sticky backdrop-blur top-0 z-10 ">
+      <div className="flex justify-between items-center px-3  sticky backdrop-blur top-0 z-10 ">
         <div className="navbar-start">
           <div className="dropdown ">
             <div
@@ -150,9 +150,9 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row mb-10 shadow-2xl rounded-2xl overflow-hidden min-h-screen">
+      <div className="flex flex-col lg:flex-row mb-10 overflow-hidden min-h-screen ">
         {/* Sidebar */}
-        <div className=" bg-green-200 rounded-l-2xl lg:rounded-l-2xl lg:w-fit p-4">
+        <div className=" bg-green-200  lg:w-fit p-4">
           <ul className="menu space-y-2 w-full">
             {navigationLinks.map((link, index) => (
               <li key={index}>
@@ -167,7 +167,7 @@ const Dashboard = () => {
           </ul>
         </div>
 
-        <div className=" p-4 w-full ">
+        <div className=" p-6 w-full ">
           <Outlet />
         </div>
       </div>

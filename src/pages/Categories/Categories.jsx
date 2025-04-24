@@ -76,7 +76,7 @@ const Categories = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Hero */}
       <section className="hero ">
         <div className="hero-content text-center" data-aos="fade-down">

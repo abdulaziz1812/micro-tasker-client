@@ -3,7 +3,7 @@ import useAuth from "../../../hook/useAuth";
 
 const Profile = () => {
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
 
   // Function to format date
   const date = (addedDate) => {
@@ -16,8 +16,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <div className="container w-full">
+    <div className="min-h-screen">
+      <div className="px-4 mx-auto">
         <div className="bg-white rounded-3xl shadow-xl p-4 border border-gray-100 overflow-hidden">
           <div className="flex flex-col lg:flex-row items-center md:items-start gap-10">
             {/* Profile Image Section */}
