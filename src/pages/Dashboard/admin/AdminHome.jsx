@@ -31,6 +31,14 @@ const AdminHome = () => {
     },
   });
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="loading loading-spinner loading-lg text-green-500"></div>
+      </div>
+    );
+  }
+
   const handleApproveWithdraw = async (id, workerEmail, withdrawalCoin) => {
     Swal.fire({
       title: "Are you sure?",
@@ -103,11 +111,11 @@ const AdminHome = () => {
 
       {/* Withdrawal*/}
       <div className="m-6 p-6  rounded-2xl shadow-2xl border border-gray-200">
-        <h2 className="text-2xl font-bold mb-4">Pending Withdraw Requests</h2>
+        <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">Pending Withdraw Requests</h2>
         <div className="overflow-x-auto ">
           <table className="table table-zebra  border-gray-200">
             <thead>
-              <tr className="bg-gray-200 text-center">
+              <tr className="bg-green-100 text-green-800 text-center">
                 <th className="p-2">Sl No</th>
                 <th className="p-2">Worker</th>
                 <th className="p-2">Email</th>
@@ -127,7 +135,7 @@ const AdminHome = () => {
                 </tr>
               ) : withdrawRequests.length > 0 ? (
                 withdrawRequests.map((request, index) => (
-                  <tr key={request._id} className="border-t">
+                  <tr key={request._id} className="border-t text-center hover:bg-green-50">
                     <td className="p-2">{index + 1}</td>
                     <td className="p-2">{request.worker_name}</td>
                     <td className="p-2">{request.worker_email}</td>

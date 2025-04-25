@@ -107,18 +107,26 @@ const MyTask = () => {
     });
   };
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="loading loading-spinner loading-lg text-green-500"></div>
+      </div>
+    );
+  }
+
   return (
-    <div className="p-6 m-8 rounded-2xl shadow-2xl border lg:w-9/12 xl:w-10/12  border-gray-200">
+    <div className="p-6 m-8 rounded-2xl shadow-2xl border   border-gray-200">
       <Helmet>
         <title>My Task | Micro Tasker</title>
       </Helmet>
-      <h2 className="text-2xl font-bold mb-4">My Tasks</h2>
+      <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">My Tasks</h2>
 
       <div className="overflow-x-auto">
         <table className="table w-full border border-gray-200">
           {/* head */}
           <thead className="text-center">
-            <tr>
+            <tr className="bg-green-100 text-green-800 text-center">
               <th className="border border-gray-200">SL No.</th>
               <th className="border border-gray-200">Task Image</th>
               <th className="border border-gray-200">Task Title</th>
@@ -132,8 +140,8 @@ const MyTask = () => {
           </thead>
           <tbody>
             {tasks.map((task, index) => (
-              <tr className="hover text-sm " key={task._id}>
-                <td className="text-center">{index + 1}</td>
+              <tr className="hover text-sm  hover:bg-green-50" key={task._id}>
+                <td className="text-center ">{index + 1}</td>
                 <td>
                   <div className="avatar">
                     <div className="mask mask-squircle h-12 w-12">

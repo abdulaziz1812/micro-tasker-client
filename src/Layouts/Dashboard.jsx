@@ -64,7 +64,7 @@ const Dashboard = () => {
       <Helmet>
         <title>Dashboard | Micro Tasker</title>
       </Helmet>
-      <div className="flex justify-between items-center px-3  sticky backdrop-blur top-0 z-10 ">
+      <div className="navbar flex justify-between items-center sticky backdrop-blur top-0 z-10 px-10 ">
         <div className="navbar-start">
           <div className="dropdown ">
             <div
@@ -107,18 +107,18 @@ const Dashboard = () => {
 
         <div className="navbar-end flex  gap-6 items-center md:items-center md:gap-12">
           <div className="flex items-center">
-            <h3 className="text-[8px] lg:text-lg font-medium">Available Coin:</h3>
-            <span className="text-[8px] ml-2 lg:text-lg font-bold">
+            <h3 className="text-[8px] lg:text-base font-medium">Available Coin:</h3>
+            <span className="text-[8px] ml-2 lg:text-base font-bold">
               {isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}
             </span>
             <img src={coin} alt="Coin" className="w-6 ml-2 hidden md:block " />
           </div>
 
           <div className="flex md:flex-col text-right gap-1">
-            <h3 className="text-[8px] lg:text-lg">
+            <h3 className="text-[8px] lg:text-base">
               <strong>Role:</strong> {user?.role || "Loading..."}
             </h3>
-            <h3 className="text-[8px] lg:text-lg">
+            <h3 className="text-[8px] lg:text-base">
               <strong>Name:</strong> {user?.name || "Loading..."}
             </h3>
           </div>
@@ -140,25 +140,27 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <img
               src={notification}
               alt="Notification Icon"
               className="w-8 h-8"
             />
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row mb-10 overflow-hidden min-h-screen ">
+      <div className="flex flex-col lg:flex-row  overflow-hidden min-h-screen px-8 mt-4">
         {/* Sidebar */}
-        <div className=" bg-green-200  lg:w-fit p-4">
+        <div className=" bg-green-200 my-4 ml-4 rounded-lg lg:w-fit p-4">
           <ul className="menu space-y-2 w-full">
             {navigationLinks.map((link, index) => (
               <li key={index}>
                 <NavLink
                   to={link.path}
-                  className="btn btn-xs btn-success text-center whitespace-nowrap"
+                  className={({ isActive }) =>
+            `btn btn-xs btn-success text-center whitespace-nowrap hover:scale-105 ${isActive ? "font-extrabold text-green-900" : ""}`
+                }
                 >
                   {link.name}
                 </NavLink>
@@ -166,8 +168,8 @@ const Dashboard = () => {
             ))}
           </ul>
         </div>
-
-        <div className=" p-6 w-full ">
+        {/* side bar left side */}
+        <div className=" m-4 w-full ">
           <Outlet />
         </div>
       </div>
@@ -176,13 +178,13 @@ const Dashboard = () => {
         <div className="w-10/12 mx-auto flex flex-col md:flex-row justify-between items-center">
           <p>&copy; 2025 Micro Tasker. All rights reserved.</p>
           <div className="flex gap-6">
-            <NavLink to="/terms" className="hover:text-white">
+            <NavLink to="/terms" className="btn btn-sm btn-success" >
               Terms of Service
             </NavLink>
-            <NavLink to="/privacy" className="hover:text-white">
+            <NavLink to="/privacy" className="btn btn-sm btn-success">
               Privacy Policy
             </NavLink>
-            <NavLink to="/contact" className="hover:text-white">
+            <NavLink to="/contact-us" className="btn btn-sm btn-success">
               Contact Us
             </NavLink>
           </div>

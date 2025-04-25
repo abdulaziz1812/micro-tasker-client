@@ -29,6 +29,8 @@ import UpdateProfile from "../pages/Dashboard/sharded/UpdateProfile";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Categories from "../pages/Categories/Categories";
+import Terms from "../pages/Terms/Terms";
+import Privacy from "../pages/Privacy/Privacy";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,14 @@ const router = createBrowserRouter([
       {
         path: "/categories",
         element: <Categories></Categories>,
+      },
+      {
+        path: "/terms",
+        element: <Terms></Terms>,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy></Privacy>,
       },
     ],
   },

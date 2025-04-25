@@ -64,12 +64,12 @@ const MySubmissions = () => {
         <title>My Submissions | Micro Tasker</title>
       </Helmet>
 
-      <h2 className="text-2xl font-bold mb-4">My Submissions</h2>
+      <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">My Submissions</h2>
 
       <div className="overflow-x-auto p-6 shadow-2xl rounded-2xl">
-        <table className="table table-zebra">
+        <table className="table">
           <thead>
-            <tr className="text-center">
+            <tr className="text-center  bg-green-100 text-green-800">
               <th>SL No.</th>
               <th>Task Title</th>
               <th>Submission Details</th>
@@ -80,7 +80,7 @@ const MySubmissions = () => {
           <tbody>
             {paginatedSubmissions.length > 0 ? (
               paginatedSubmissions.map((submission, index) => (
-                <tr key={submission._id} className="text-center">
+                <tr key={submission._id} className="text-center hover:bg-green-50">
                   <td>{startIndex + index + 1}</td>
                   <td>{submission.task_title}</td>
                   <td>{submission.submission_details}</td>

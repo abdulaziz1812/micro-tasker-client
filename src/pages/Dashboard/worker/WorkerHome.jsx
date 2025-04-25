@@ -40,7 +40,7 @@ const WorkerHome = () => {
         <title>Worker-Home| Micro Tasker</title>
       </Helmet>
       <div className="p-8 m-8 rounded-2xl shadow-2xl border border-gray-200 flex flex-col ">
-        <h2 className="text-2xl font-bold mb-4">Worker Dashboard</h2>
+        
 
         <div className="stats shadow-2xl border-gray-200 border">
           <div className="stat">
@@ -69,10 +69,10 @@ const WorkerHome = () => {
         </div>
 
         {/* Task to Review Section */}
-        <h2 className="text-xl font-bold m-4">Approved Submission</h2>
+        <h2 className="text-3xl font-bold text-green-800 my-6 text-center">Approved Submission</h2>
         <div className="overflow-x-auto">
           <table className="table w-full border border-gray-200">
-            <thead className="text-center bg-gray-200">
+            <thead className="bg-green-100 text-green-800 text-center">
               <tr>
                 <th>Sl no</th>
                 <th>Task Title</th>
@@ -83,8 +83,8 @@ const WorkerHome = () => {
             </thead>
             <tbody>
               {approvedSubmissions.map((submission, index) => (
-                <tr key={submission._id} className="hover text-sm text-center">
-                  <td>{index + 1}</td>
+                <tr key={submission._id} className="hover text-sm text-center hover:bg-green-50">
+                  <td className="">{index + 1}</td>
                   <td>{submission.task_title}</td>
                   <td className="text-center">{submission.payable_amount}</td>
                   <td>{submission.buyer_name}</td>

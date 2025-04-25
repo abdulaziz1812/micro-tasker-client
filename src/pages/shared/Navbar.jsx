@@ -13,13 +13,12 @@ const Navbar = () => {
   const authLink = (
     <>
       <li>
-        <NavLink to="/dashboard" className="btn btn-success btn-sm">
+        <NavLink to="/dashboard" className=" hover:scale-105">
           Dashboard
         </NavLink>
       </li>
       
-        <div className="flex justify-center items-center gap-2 px-2">
-          Available coin:{" "}
+        <div className="flex justify-center items-center gap-2 px-2 text-underline font-semibold text-gray-700">          Available coin:{" "}
           {isLoading ? "Loading..." : error ? "Error" : user?.coin || 0}
           <img src={coin} alt="" className="w-5 rounded-full" />
         </div>
@@ -31,28 +30,28 @@ const Navbar = () => {
     <>
     <li>
         <NavLink to="/" className={({ isActive }) =>
-            `btn btn-sm btn-success ${isActive ? "font-extrabold" : ""}`
+            `hover:scale-105 ${isActive ? "font-bold text-green-900" : ""}`
           }>
           Home
         </NavLink>
       </li>
     <li>
         <NavLink to="/about-us" className={({ isActive }) =>
-            `btn btn-sm btn-success ${isActive ? "font-extrabold" : ""}`
+            `hover:scale-105 ${isActive ? "font-bold text-green-900" : ""}`
           }>
           About Us
         </NavLink>
       </li>
     <li>
         <NavLink to="/contact-us" className={({ isActive }) =>
-            `btn btn-sm btn-success ${isActive ? "font-extrabold" : ""}`
+            `hover:scale-105 ${isActive ? "font-bold text-green-900" : ""}`
           }>
           Contact Us
         </NavLink>
       </li>
     <li>
         <NavLink to="/categories" className={({ isActive }) =>
-            `btn btn-sm btn-success ${isActive ? "font-extrabold" : ""}`
+            `hover:scale-105 ${isActive ? "font-bold text-green-900" : ""}`
           }>
           Categories
         </NavLink>

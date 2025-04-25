@@ -32,12 +32,12 @@ const PaymentHistory = () => {
       <Helmet>
         <title>Payment-History | Micro Tasker</title>
       </Helmet>
-      <h2 className="text-2xl font-bold mb-4">Payment History</h2>
+      <h2 className="text-3xl font-bold text-center text-green-800 mb-4">Payment History</h2>
       <div className="overflow-x-auto p-6  shadow-2xl border rounded-2xl border-gray-200">
-        <table className="table table-zebra ">
+        <table className="table ">
           {/* head */}
           <thead>
-            <tr className="text-center">
+            <tr className="bg-green-100 text-green-800 text-center">
               <th>Sl No</th>
               <th>Price</th>
               <th>Transaction Id</th>
@@ -46,7 +46,7 @@ const PaymentHistory = () => {
           </thead>
           <tbody>
             {payments.map((payment, index) => (
-              <tr key={payment._id} className="text-center">
+              <tr key={payment._id} className="text-center hover:bg-green-50">
                 <td>{index + 1}</td>
                 <td>$ {payment.price}</td>
                 <td>{payment.transactionId}</td>

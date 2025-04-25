@@ -62,7 +62,7 @@ const Withdraw = () => {
       <Helmet>
         <title>Withdraw | Micro Tasker</title>
       </Helmet>
-      <h2 className="text-lg sm:text-2xl font-bold mb-4 text-center">
+      <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">
         Withdraw Coins
       </h2>
       <p className="text-center mb-2">

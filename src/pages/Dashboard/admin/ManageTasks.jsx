@@ -77,13 +77,13 @@ const ManageTasks = () => {
 
   return (
     <div className="p-4 rounded-2xl shadow-2xl border border-gray-200 ">
-      <h2 className="text-2xl font-bold mb-4">Manage Tasks</h2>
+      <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">Manage Tasks</h2>
 
       <div className="overflow-x-auto">
         <table className="table border border-gray-200">
           {/* head */}
-          <thead className="text-center">
-            <tr className="bg-gray-200">
+          <thead className="">
+            <tr className="bg-green-100 text-green-800 text-center">
               <th>SL No.</th>
               <th>Task Image</th>
               <th>Task Title</th>
@@ -100,7 +100,7 @@ const ManageTasks = () => {
           <tbody>
             {tasks.map((task, index) => (
               <tr className="hover text-sm " key={task._id}>
-                <td className="text-center">{index + 1}</td>
+                <td className="text-center hover:bg-green-50">{index + 1}</td>
                 <td>
                   <div className="avatar">
                     <div className="mask mask-squircle h-12 w-12">
@@ -116,7 +116,7 @@ const ManageTasks = () => {
                 <td>{task.submission_info}</td>
                 <td>{task.email}</td>
                 <td>{task.name}</td>
-                <td className="flex justify-center items-center">
+                <td className="text-center">
                   <button
                     onClick={() => handleDelete(task)}
                     className="btn btn-error text-white btn-xs"

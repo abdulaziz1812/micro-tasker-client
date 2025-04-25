@@ -92,7 +92,7 @@ const AddTask = () => {
       <Helmet>
         <title>Add TAsk | Micro Tasker</title>
       </Helmet>
-      <h2 className="text-2xl font-bold mb-4 w-full">Add New Task</h2>
+      <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">Add New Task</h2>
       <div>
         <div className="flex-col lg:flex-row w-full">
           <div className="card bg-base-100 w-full shadow-2xl border border-gray-200">
@@ -180,7 +180,7 @@ const AddTask = () => {
 
               <div className="form-control">
                 <label className="label mb-2">
-                  <span className="label-text">Task Image</span>
+                  <span className="label-text mr-2"> Task Image </span>
                 </label>
                 <input
                   type="file"

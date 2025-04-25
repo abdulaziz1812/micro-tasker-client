@@ -83,10 +83,10 @@ const BuyerHome = () => {
       </Helmet>
 
       <div className="p-8 m-8 rounded-2xl shadow-2xl border border-gray-200 flex flex-col ">
-        <h2 className="text-2xl font-bold mb-4">Buyer Dashboard</h2>
+        
 
         {/* Buyer Stats Section */}
-        <div className="stats shadow-2xl border-gray-200 border">
+        <div className="stats shadow-2xl m-8 border border-gray-200">
           <div className="stat">
             <div className="stat-figure text-secondary">
               <FaTasks className="text-3xl" />
@@ -113,10 +113,11 @@ const BuyerHome = () => {
         </div>
 
         {/* Task to Review Section */}
-        <h2 className="text-xl font-bold m-4">Tasks to Review</h2>
+        <div className="m-6 p-6 rounded-2xl shadow-2xl border border-gray-200">
+        <h2 className="text-3xl font-bold text-green-800 my-6 text-center">Tasks to Review</h2>
         <div className="overflow-x-auto">
-          <table className="table lg:w-11/12 border border-gray-200">
-            <thead className="text-center bg-gray-200">
+          <table className="table table-zebra  border-gray-200">
+            <thead className="bg-green-100 text-green-800 text-center">
               <tr>
                 <th>Worker Name</th>
                 <th>Task Title</th>
@@ -127,7 +128,7 @@ const BuyerHome = () => {
             </thead>
             <tbody>
               {pendingSubmissions.map((submission) => (
-                <tr key={submission._id} className="hover text-sm text-center">
+                <tr key={submission._id} className="border-t text-center hover:bg-green-50">
                   <td>{submission.worker_name}</td>
                   <td>{submission.task_title}</td>
                   <td className="text-center">{submission.payable_amount}</td>
@@ -137,7 +138,7 @@ const BuyerHome = () => {
                         setSelectedSubmission(submission);
                         setIsModalOpen(true);
                       }}
-                      className="btn btn-info text-white btn-xs"
+                      className="btn btn-success btn-xs"
                     >
                       View Submission
                     </button>
@@ -146,7 +147,7 @@ const BuyerHome = () => {
                   <td className="flex gap-2 justify-center items-center">
                     <button
                       onClick={() => handleApprove(submission)}
-                      className="btn btn-success text-white btn-xs"
+                      className="btn btn-success btn-xs"
                     >
                       Approve
                     </button>
@@ -162,13 +163,15 @@ const BuyerHome = () => {
             </tbody>
           </table>
         </div>
+        </div>
       </div>
 
       {/* Modal for View Submission */}
       {isModalOpen && selectedSubmission && (
         <div className="modal modal-open">
           <div className="modal-box">
-            <h3 className="text-2xl font-bold">Submission Details</h3>
+            <h3 className="text-3xl font-bold text-center text-green-800 mb-4">Submission Details</h3>
+            <div className=" p-4 rounded-lg bg-green-50 shadow-lg border border-gray-200">
             <p>
               <strong>Worker Name:</strong> {selectedSubmission.worker_name}
             </p>
@@ -183,6 +186,7 @@ const BuyerHome = () => {
               <strong>Submission Details:</strong>{" "}
               {selectedSubmission.submission_details}
             </p>
+            </div>
             <div className="modal-action">
               <button onClick={() => setIsModalOpen(false)} className="btn">
                 Close

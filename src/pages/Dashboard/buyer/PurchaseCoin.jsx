@@ -21,18 +21,18 @@ function PurchaseCoins() {
       <Helmet>
         <title>Purchase Coin| Micro Tasker</title>
       </Helmet>
-      <h2 className="text-2xl font-bold mb-8">Purchase Coins</h2>
+      <h2 className="text-3xl font-bold text-center text-green-800 mb-4">Purchase Coins</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {coinPackages.map((pkg, index) => (
           <div
             key={index}
-            className=" p-4 rounded-lg shadow-xl cursor-pointer hover:shadow-2xl hover:bg-gray-100 transition flex flex-col items-center justify-center "
+            className=" p-4 rounded-lg shadow-lg cursor-pointer hover:shadow-xl hover:bg-green-100 transition flex flex-col items-center justify-center "
             onClick={() => handlePurchase(pkg)}
           >
             <h3 className="text-xl font-semibold">{pkg.coins} Coins </h3>
             <img src={coin} alt="coin" className="w-20 rounded-full" />
             <p className="text-lg font-medium">${pkg.price}</p>
-            <button className="mt-2 bg-blue-600 text-white px-4 py-2 rounded">
+            <button className="btn btn-success mt-4">
               Buy Now
             </button>
           </div>

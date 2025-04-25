@@ -17,11 +17,11 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="px-4 mx-auto">
-        <div className="bg-white rounded-3xl shadow-xl p-4 border border-gray-100 overflow-hidden">
-          <div className="flex flex-col lg:flex-row items-center md:items-start gap-10">
+      <div className="w-11/12 mx-auto mt-4">
+        <div className="rounded-lg shadow-xl p-4 border border-gray-100 overflow-hidden">
+          <div className="flex flex-col lg:flex-row items-center  gap-10">
             {/* Profile Image Section */}
-            <div className="relative flex-shrink-0">
+            <div className="relative flex-shrink-0 mt-4">
               <div className="w-72 h-72 overflow-hidden shadow-lg border-4 border-gray-200 rounded-tl-3xl rounded-br-3xl">
                 <img
                   src={user.photoURL || "https://via.placeholder.com/288"}
@@ -43,18 +43,18 @@ const Profile = () => {
                 Welcome Back,
               </h1>
               <div className="mb-6">
-                <span className="text-4xl md:text-5xl font-extrabold text-gray-900">
+                <span className="text-4xl md:text-5xl font-extrabold text-green-900">
                   {user.displayName || "User"}
                 </span>
-                <span className="text-4xl md:text-5xl font-extrabold text-gray-900">
+                <span className="text-4xl md:text-5xl font-extrabold text-green-900">
                   !
                 </span>
               </div>
 
-              <div className=" rounded-xl p-6 shadow-md border border-gray-100 bg-gray-50">
+              <div className=" rounded-xl p-6 shadow-md border border-gray-100 bg-green-200 w-8/12" >
                 <ul className="space-y-4 text-gray-700 ">
-                  <li className="flex items-center gap-4 bg-white rounded-lg p-3 shadow-sm border border-gray-200 ">
-                    <span className="w-23 text-sm font-semibold text-gray-600 bg-gray-100 px-3 py-1 rounded-full  ">
+                  <li className=" flex items-center gap-4 bg-white rounded-lg p-3 shadow-sm border border-gray-200 ">
+                    <span className="w-23 text-sm font-semibold text-gray-600 bg-green-200 px-3 py-1 rounded-lg  ">
                       Name
                     </span>
                     <span className="flex-1 font-medium">
@@ -62,7 +62,7 @@ const Profile = () => {
                     </span>
                   </li>
                   <li className="flex items-center gap-4 bg-white rounded-lg p-3 shadow-sm border border-gray-200">
-                    <span className="w-23 text-sm font-semibold text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+                    <span className="w-23 text-sm font-semibold text-gray-600 bg-green-200 px-3 py-1 rounded-lg">
                       Email
                     </span>
                     <span className="flex-1 font-medium">
@@ -70,7 +70,7 @@ const Profile = () => {
                     </span>
                   </li>
                   <li className="flex items-center gap-4 bg-white rounded-lg p-3 shadow-sm border border-gray-200">
-                    <span className="w-23 text-sm font-semibold text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+                    <span className="w-23 text-sm font-semibold text-gray-600 bg-green-200 px-3 py-1 rounded-lg">
                       Joined
                     </span>
                     <span className="flex-1 font-medium">
@@ -80,7 +80,7 @@ const Profile = () => {
                     </span>
                   </li>
                   <li className="flex items-center gap-4 bg-white rounded-lg p-3 shadow-sm border border-gray-200">
-                    <span className="w-23 text-sm font-semibold text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+                    <span className="w-23 text-sm font-semibold text-gray-600 bg-green-200 px-3 py-1 rounded-lg">
                       Last Login
                     </span>
                     <span className="flex-1 font-medium">

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -10,7 +9,6 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 import auth from "../../firebase";
@@ -26,10 +24,29 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const updateUserProfile = (updatedData) => {
+  const updateUserProfile = async (updatedData) => {
     setLoading(true);
-    updateProfile(auth.currentUser, updatedData);
-    setUser({ ...auth.currentUser, ...updatedData });
+    try {
+      if (!auth.currentUser) {
+        throw new Error("No authenticated user found");
+      }
+      // Validate inputs
+      const { displayName, photoURL } = updatedData;
+      if (displayName && typeof displayName !== "string") {
+        throw new Error("Invalid displayName: Must be a string");
+      }
+      if (photoURL && !/^https?:\/\/.+\.(jpg|jpeg|png|gif)$/.test(photoURL)) {
+        throw new Error("Invalid photoURL: Must be a valid image URL");
+      }
+      await updateProfile(auth.currentUser, updatedData);
+      setUser({ ...auth.currentUser, ...updatedData });
+      return auth.currentUser; // Return updated user
+    } catch (err) {
+      setLoading(false);
+      throw err; // Propagate error to caller
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -67,13 +84,8 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
-
     return signInWithPopup(auth, googleProvider);
   };
-
-  
-
-  // console.log(user);
 
   const authInfo = {
     user,

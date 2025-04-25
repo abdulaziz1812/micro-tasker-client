@@ -110,10 +110,13 @@ const CheckoutFrom = () => {
       }
     }
   };
+
+  const handleSubmitDummy = async (e) => {
+  }
   return (
     <div className="overflow-x-auto">
       <form
-        className="p-10 min-w-2xl m-8 rounded-2xl shadow-2xl "
+        className="p-10 min-w-2xl m-8 rounded-2xl shadow-lg "
         onSubmit={handleSubmit}
       >
         <CardElement
@@ -139,6 +142,11 @@ const CheckoutFrom = () => {
         >
           Pay
         </button>
+        <div className="mt-4 text-sm text-gray-600">
+          <p>For testing, use:</p>
+          <p>Card: 4242 4242 4242 4242</p>
+          <p>MM/YY: 04/35, CVC: 123, ZIP: 12345</p>
+        </div>
         <p className="text-red-500">{error}</p>
         {transactionId && (
           <p className="text-green-600">
