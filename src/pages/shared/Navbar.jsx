@@ -59,7 +59,7 @@ const Navbar = () => {
     </>
   )
   return (
-    <div className="bg-gray-200 ">
+    <div className="bg-green-200  ">
       <div className="w-11/12 mx-auto ">
         <div className="navbar  text-black">
           <div className="navbar-start">

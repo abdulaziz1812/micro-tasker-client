@@ -82,11 +82,11 @@ const BuyerHome = () => {
         <title>Buyer-Home | Micro Tasker</title>
       </Helmet>
 
-      <div className="p-8 m-8 rounded-2xl shadow-2xl border border-gray-200 flex flex-col ">
+      <div className="md:p-8 md:m-8 rounded-lg shadow-lg border border-gray-200 flex flex-col ">
         
 
         {/* Buyer Stats Section */}
-        <div className="stats shadow-2xl m-8 border border-gray-200">
+        <div className="stats shadow-lg  md:m-8 border border-gray-200 flex flex-col md:flex-row gap-4">
           <div className="stat">
             <div className="stat-figure text-secondary">
               <FaTasks className="text-3xl" />
@@ -113,7 +113,7 @@ const BuyerHome = () => {
         </div>
 
         {/* Task to Review Section */}
-        <div className="m-6 p-6 rounded-2xl shadow-2xl border border-gray-200">
+        <div className="md:m-6 md:p-6 my-8 rounded-lg shadow-lg border border-gray-200 ">
         <h2 className="text-3xl font-bold text-green-800 my-6 text-center">Tasks to Review</h2>
         <div className="overflow-x-auto">
           <table className="table table-zebra  border-gray-200">

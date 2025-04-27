@@ -95,8 +95,8 @@ const ManageUsers = () => {
   }
 
   return (
-    <div className="m-4 p-4 rounded-lg shadow-2xl border border-gray-200 ">
-      <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">Manage Users</h2>
+    <div className="my-4 p-4 rounded-lg shadow-lg border border-gray-200 ">
+      <h2 className="md:text-3xl font-bold text-green-800 mb-6 text-center">Manage Users</h2>
       <div className="overflow-x-auto">
         <table className="table  ">
           <thead>
@@ -118,7 +118,7 @@ const ManageUsers = () => {
                   <img
                     src={user.photo}
                     alt={user.name}
-                    className="w-12 h-12 rounded-full object-cover mx-auto ring-2 ring-green-300"
+                    className="w-12  rounded-full object-cover mx-auto ring-2 ring-green-300"
                   />
                 </td>
                 <td>{user.name}</td>

@@ -3,7 +3,6 @@ import logo from "../assets/logo.png";
 import useCoin from "../hook/useCoin";
 import useAuth from "../hook/useAuth";
 import coin from "../assets/coin.gif";
-import notification from "../assets/notification.gif";
 import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
@@ -150,16 +149,20 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row  overflow-hidden min-h-screen px-8 mt-4">
+      <div className="flex flex-col md:flex-row min-h-screen overflow-x-hidden">
+        
         {/* Sidebar */}
-        <div className=" bg-green-200 my-4 ml-4 rounded-lg lg:w-fit p-4">
+        <div className=" bg-green-200  w-full md:w-fit
+         md:min-w-[150px] md:mt-3 pt-
+        md:sticky md:top-0 md:min-h-screen 
+        overflow-y-auto">
           <ul className="menu space-y-2 w-full">
             {navigationLinks.map((link, index) => (
               <li key={index}>
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
-            `btn btn-xs btn-success text-center whitespace-nowrap hover:scale-105 ${isActive ? "font-extrabold text-green-900" : ""}`
+            `btn btn-xs btn-success text-center whitespace-nowrap hover:scale-101 ${isActive ? "font-extrabold text-green-900" : ""}`
                 }
                 >
                   {link.name}
@@ -168,23 +171,25 @@ const Dashboard = () => {
             ))}
           </ul>
         </div>
-        {/* side bar left side */}
-        <div className=" m-4 w-full ">
+        {/* side bar right side */}
+        
+          <div className="flex-1 overflow-x-auto p-4">
           <Outlet />
-        </div>
+          </div>
+        
       </div>
 
       <footer className=" py-6">
-        <div className="w-10/12 mx-auto flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; 2025 Micro Tasker. All rights reserved.</p>
+        <div className="w-11/12 mx-auto flex flex-col md:flex-row gap-4 justify-between items-center">
+          <p className="text-xs md:text-base">&copy; 2025 Micro Tasker. All rights reserved.</p>
           <div className="flex gap-6">
-            <NavLink to="/terms" className="btn btn-sm btn-success" >
+            <NavLink to="/terms" className="btn btn-xs btn-success" >
               Terms of Service
             </NavLink>
-            <NavLink to="/privacy" className="btn btn-sm btn-success">
+            <NavLink to="/privacy" className="btn btn-xs btn-success">
               Privacy Policy
             </NavLink>
-            <NavLink to="/contact-us" className="btn btn-sm btn-success">
+            <NavLink to="/contact-us" className="btn btn-xs btn-success">
               Contact Us
             </NavLink>
           </div>

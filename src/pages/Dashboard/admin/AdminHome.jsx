@@ -75,7 +75,7 @@ const AdminHome = () => {
         <title>Admin Home | Micro Tasker</title>
       </Helmet>
       {/* Stats */}
-      <div className="stats shadow-2xl m-8 border border-gray-200">
+      <div className="stats shadow-lg lg:my-8 border border-gray-200 flex flex-col md:flex-row gap-4">
         <div className="stat">
           <div className="stat-figure text-secondary">
             <TiSpanner className="text-3xl" />
@@ -110,8 +110,8 @@ const AdminHome = () => {
       </div>
 
       {/* Withdrawal*/}
-      <div className="m-6 p-6  rounded-2xl shadow-2xl border border-gray-200">
-        <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">Pending Withdraw Requests</h2>
+      <div className="my-6 p-6  rounded-2xl shadow-lg border border-gray-200">
+        <h2 className="md:text-3xl font-bold text-green-800 mb-6 text-center">Pending Withdraw Requests</h2>
         <div className="overflow-x-auto ">
           <table className="table table-zebra  border-gray-200">
             <thead>

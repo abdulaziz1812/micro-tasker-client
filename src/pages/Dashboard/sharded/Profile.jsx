@@ -16,9 +16,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <div className="w-11/12 mx-auto mt-4">
-        <div className="rounded-lg shadow-xl p-4 border border-gray-100 overflow-hidden">
+    <div className="min-h-screen mx-auto">
+      <div className="mb-8">
+        <div className="rounded-lg shadow-lg p-4 border border-gray-100 overflow-hidden">
           <div className="flex flex-col lg:flex-row items-center  gap-10">
             {/* Profile Image Section */}
             <div className="relative flex-shrink-0 mt-4">
@@ -51,7 +51,7 @@ const Profile = () => {
                 </span>
               </div>
 
-              <div className=" rounded-xl p-6 shadow-md border border-gray-100 bg-green-200 w-8/12" >
+              <div className=" rounded-xl p-6 shadow-md border border-gray-100 bg-green-200 w-full xl:w-8/12" >
                 <ul className="space-y-4 text-gray-700 ">
                   <li className=" flex items-center gap-4 bg-white rounded-lg p-3 shadow-sm border border-gray-200 ">
                     <span className="w-23 text-sm font-semibold text-gray-600 bg-green-200 px-3 py-1 rounded-lg  ">

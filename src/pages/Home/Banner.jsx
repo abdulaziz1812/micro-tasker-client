@@ -75,10 +75,10 @@ const Banner = () => {
             <div className="w-full lg:w-2/3 lg:h-full md:h-[350px] relative px-6 md:px-8 lg:p-12">
               <img
                 src={banner01}
-                className="object-cover rounded-2xl w-full h-full brightness-75"
+                className="object-cover rounded-lg w-full h-full brightness-75 "
                 alt="Empower Your Future"
               />
-              <div className="absolute inset-x-6 md:inset-x-8 lg:inset-12 inset-y-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900 rounded-2xl"></div>
+              <div className="absolute inset-x-6 md:inset-x-8 lg:inset-12 inset-y-0 bg-gradient-to-t from-green-950 via-transparent to-gray-950 rounded-lg"></div>
             </div>
           </div>
         </SwiperSlide>
@@ -126,10 +126,10 @@ const Banner = () => {
             <div className="w-full lg:w-2/3 h-full relative px-6 md:px-8 lg:p-12">
               <img
                 src={banner02}
-                className="object-cover rounded-2xl w-full h-full brightness-75"
+                className="object-cover rounded-lg w-full h-full brightness-75"
                 alt="Your Tasks, Your Earnings"
               />
-              <div className="absolute inset-x-6 md:inset-x-8 lg:inset-12 inset-y-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900 rounded-2xl"></div>
+              <div className="absolute inset-x-6 md:inset-x-8 lg:inset-12 inset-y-0 bg-gradient-to-t from-green-950 via-transparent to-green-950 rounded-lg"></div>
             </div>
           </div>
         </SwiperSlide>
@@ -177,10 +177,10 @@ const Banner = () => {
             <div className="w-full lg:w-2/3 h-full relative px-6 md:px-8 lg:p-12">
               <img
                 src={banner03}
-                className="object-cover rounded-2xl w-full h-full brightness-75"
+                className="object-cover rounded-lg w-full h-full brightness-75"
                 alt="Join the Best Workers"
               />
-              <div className="absolute inset-x-6 md:inset-x-8 lg:inset-12 inset-y-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900 rounded-2xl"></div>
+              <div className="absolute inset-x-6 md:inset-x-8 lg:inset-12 inset-y-0 bg-gradient-to-t from-green-950 via-transparent to-green-950 rounded-lg"></div>
             </div>
           </div>
         </SwiperSlide>
