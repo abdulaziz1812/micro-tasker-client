@@ -10,6 +10,7 @@ import Community from './Community';
 import FAQ from './FAQ';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import MobileWallet from './Mobilewallet';
 
 const Home = () => {
 
@@ -32,6 +33,7 @@ const Home = () => {
             <Testimonial></Testimonial>
             <Community></Community>
             <JoinSection></JoinSection>
+            <MobileWallet></MobileWallet>
             <FAQ></FAQ>
         </div>
     );
